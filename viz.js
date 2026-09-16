@@ -196,7 +196,7 @@
       })
     ));
     if (!responses.every((response) => response.ok)) throw new Error("public metadata unavailable");
-    return Promise.all(responses.map(async (response) => {
+    const repos = await Promise.all(responses.map(async (response) => {
       const repo = await response.json();
       return {
         name: repo.name,
@@ -207,6 +207,10 @@
         updated: repo.updated_at
       };
     }));
+    document.querySelector("#repo-count").textContent = String(repos.length).padStart(2, "0");
+    document.querySelector("#star-count").textContent = String(repos.reduce((sum, repo) => sum + repo.stars, 0)).padStart(2, "0");
+    document.querySelector("#pulse-date").textContent = `refreshed ${new Date().toLocaleTimeString()}`;
+    return repos;
   }
 
   async function switchMode(next) {
@@ -234,6 +238,10 @@
   }
 
   addEventListener("resize", resize);
+  addEventListener("pointermove", (event) => {
+    document.documentElement.style.setProperty("--px", `${event.clientX / innerWidth * 100}%`);
+    document.documentElement.style.setProperty("--py", `${event.clientY / innerHeight * 100}%`);
+  }, { passive: true });
   canvas.addEventListener("pointermove", select);
   canvas.addEventListener("pointerdown", select);
   detail.addEventListener("click", (event) => {
