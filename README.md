@@ -1,8 +1,8 @@
 # Jesús Vilela Jato · Dojo-1
 
 <p align="center">
-  <a href="https://jesusvilela.github.io/jesusvilela/">
-    <img src="https://raw.githubusercontent.com/jesusvilela/jesusvilela/main/identity-mark.svg" alt="Dojo-1 identity mark" width="180" />
+  <a href="https://jesusvilela.github.io/">
+    <img src="https://raw.githubusercontent.com/jesusvilela/jesusvilela.github.io/main/identity-mark.svg" alt="Dojo-1 identity mark" width="180" />
   </a>
 </p>
 
@@ -12,7 +12,7 @@
 
 **A research identity for building systems that refuse to be fooled.**
 
-[Open the AAA research site](https://jesusvilela.github.io/jesusvilela/) ·
+[Open the AAA research site](https://jesusvilela.github.io/) ·
 [Visit Dojo-1](https://github.com/Dojo-1) ·
 [Explore doubt-the-machine](https://github.com/Dojo-1/doubt-the-machine)
 
@@ -38,33 +38,14 @@ orientation:
 - **memory** — preserve lineage, assumptions, and failed routes;
 - **doubt** — expose falsifiers and matched nulls;
 - **voice** — translate difficult work into public, inspectable artifacts;
-- **boundary** — never reveal private code, branches, screenshots, or data.
+- **boundary** — publish deliberate, inspectable artifacts.
 
 ## Hypercomplex research map
 
-The [live Poincaré projection](https://jesusvilela.github.io/jesusvilela/#map-title)
-maps the identity as a nested hyperbolic tree: analytic physics, algebraic
-proof kernels, geometric architectures, doubt protocols, and their outer
-evidence/boundary strata. Its **EAVS semantic mirror** projects the sanitized
-aggregate of 717 `.semantic` chunks—counts and public strata only, with no raw
-text, hashes, local paths, branches, or private metadata. Hover or touch a node
-to inspect its role.
-
-The **live braided atlas** places that private-safe EAVS projection beside
-live public metadata from `Dojo-1/doubt-the-machine`. Their shared fibers are
-proof kernels, falsifiers, provenance, boundary discipline, and public
-translation. EAVS is never queried from the browser because it is private.
-
-## No-leak protocol
-
-- Private or permissioned work is represented by capability class, never by
-  hidden repository names, file trees, branches, issue lists, or screenshots.
-- Public links go only to public repositories, papers, tests, releases, or
-  explicitly caveated summaries.
-- The site uses local HTML/CSS/SVG/JSON and vanilla JavaScript: no analytics,
-  remote fonts, badge services, trackers, or third-party libraries. Live mode
-  reads only public GitHub repository metadata.
-- The profile remains a human-controlled publication surface; no generated
-  text is treated as proof merely because it sounds certain.
+The [live public projection](https://jesusvilela.github.io/#map-title) maps
+available work as a nested hyperbolic tree: verification, semantic
+infrastructure, context systems, formal mathematics, AI orchestration, and
+geometric learning. Its live mode reads public GitHub metadata and links every
+named node to an inspectable repository.
 
 <p align="center"><sub>Quiet systems · explicit obligations · proofs you can rebuild.</sub></p>

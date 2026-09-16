@@ -131,7 +131,6 @@ h3 { font-size: 1.35rem; letter-spacing: -.025em; }
 .card .tag { color: var(--gold); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; }
 .public { border-color: rgba(106,141,146,.48); }
 .gated { border-color: rgba(232,220,194,.42); }
-.private { border-color: rgba(183,110,121,.40); }
 
 .cosmos {
   margin-top: 22px;
