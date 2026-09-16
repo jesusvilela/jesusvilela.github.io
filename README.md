@@ -10,7 +10,7 @@
 
 `静けさ / adversarial verification / geometric systems / explicit doubt gates`
 
-**A research identity for building systems that refuse to be fooled.**
+**A public research campaign for systems built to withstand doubt.**
 
 [Open the AAA research site](https://jesusvilela.github.io/) ·
 [Visit Dojo-1](https://github.com/Dojo-1) ·
@@ -24,9 +24,19 @@ I build research systems at the boundary of mathematics, software, and
 machine intelligence: proof kernels, symbolic tests, provenance ledgers,
 geometric architectures, and adversarial review loops.
 
-The public surface is intentionally quiet. Visuals are a map, not a claim;
-every technical statement should lead to a public repository, test, paper,
-release, or explicit caveat.
+The public surface is intentionally quiet but editorially direct. Its recurring
+discipline is **doubt → measure → test → revert → repeat**. Visuals are a map,
+not a claim; each presentation layer identifies its evidence status: **P**
+inspectable artifact, **M** bounded measurement, **H** hypothesis, **S**
+metaphor/design proposal, **R** retired/corrected, **CTA** action, or
+**Metadata** repository fact. Technical statements lead to public repositories
+or carry an explicit caveat.
+
+The visual system is one continuous grammar rather than a set of era modes:
+bitmap economy and restrained attribute color, scientific-workstation
+instrumentation and wireframes, Japanese zen spacing, and the contemporary
+hyperbolic observatory all share the same evidence rail. These are **S**
+design references, not historical-authenticity claims.
 
 ## The digital ego, kept honest
 
@@ -47,5 +57,14 @@ available work as a nested hyperbolic tree: verification, semantic
 infrastructure, context systems, formal mathematics, AI orchestration, and
 geometric learning. Its live mode reads public GitHub metadata and links every
 named node to an inspectable repository.
+
+The canvas supports pointer, touch, and keyboard navigation. Use the arrow keys
+to select a node and Enter to open its public repository. A semantic DOM mirror
+keeps every node and source link available without Canvas. The Canvas2D field
+is the complete baseline engine: it caps its pixel budget, pauses offscreen or
+when the document is hidden, offers a user pause, and renders one stable frame
+under reduced motion. A GPU enhancement is intentionally not shipped until a
+pinned Three.js WebGPU/WebGL2 island can be built and validated without making
+meaning, links, or evidence depend on it.
 
 <p align="center"><sub>Quiet systems · explicit obligations · proofs you can rebuild.</sub></p>
