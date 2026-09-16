@@ -40,20 +40,15 @@ orientation:
 - **voice** — translate difficult work into public, inspectable artifacts;
 - **boundary** — never reveal private code, branches, screenshots, or data.
 
-## Nested research map
+## Hypercomplex research map
 
-```mermaid
-flowchart TD
-    I["digital research identity"] --> C["quiet center"]
-    I --> M["public memory"]
-    I --> D["doubt gates"]
-    C --> K["algebraic kernels"]
-    M --> P["provenance + Pages atlas"]
-    D --> F["falsifiers + matched nulls"]
-    K --> E["rebuildable evidence"]
-    P --> E
-    F --> E
-```
+The [live Poincaré projection](https://jesusvilela.github.io/jesusvilela/#map-title)
+maps the identity as a nested hyperbolic tree: analytic physics, algebraic
+proof kernels, geometric architectures, doubt protocols, and their outer
+evidence/boundary strata. Its **EAVS semantic mirror** projects the sanitized
+aggregate of 717 `.semantic` chunks—counts and public strata only, with no raw
+text, hashes, local paths, branches, or private metadata. Hover or touch a node
+to inspect its role.
 
 ## No-leak protocol
 
@@ -61,8 +56,9 @@ flowchart TD
   hidden repository names, file trees, branches, issue lists, or screenshots.
 - Public links go only to public repositories, papers, tests, releases, or
   explicitly caveated summaries.
-- The site uses local HTML/CSS/SVG only: no analytics, remote fonts, badge
-  services, JavaScript trackers, or third-party image dependencies.
+- The site uses local HTML/CSS/SVG/JSON and vanilla JavaScript only: no
+  analytics, remote fonts, badge services, trackers, or third-party
+  dependencies.
 - The profile remains a human-controlled publication surface; no generated
   text is treated as proof merely because it sounds certain.
 

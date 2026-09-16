@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="dark light" />
   <title>Dojo-1 · proofs you can rebuild</title>
   <meta name="description" content="Dojo-1: adversarial verification, proof kernels, geometric systems, and research infrastructure that refuses narrative closure without evidence." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23e8dcc2' stroke-width='8' stroke-linecap='round' stroke-dasharray='125 30'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -63,18 +64,40 @@
       </article>
     </section>
 
-    <section class="panel map" aria-labelledby="map-title">
-      <div>
-        <p class="kicker">AAA map</p>
-        <h2 id="map-title">Analytic · Algebraic · Architectural</h2>
-        <p>The visual grammar is nested: center, kernels, frames, provenance, public signal. Each layer is allowed to look beautiful only after its evidential role is named.</p>
+    <section class="cosmos" aria-labelledby="map-title">
+      <header class="cosmos-head">
+        <div>
+          <p class="kicker">hypercomplex research manifold · live projection</p>
+          <h2 id="map-title">One identity. Many coordinate systems.</h2>
+        </div>
+        <p>Move through the Poincaré disk. Each node is a public capability,
+          proof discipline, or boundary—not a claim of completion.</p>
+      </header>
+      <div class="cosmos-switch" role="group" aria-label="Visualization dataset">
+        <button class="active" type="button" data-cosmos="identity">identity manifold</button>
+        <button type="button" data-cosmos="semantic">EAVS semantic mirror</button>
       </div>
-      <ol class="rings">
-        <li><strong>Center:</strong> quiet question, no premature claim.</li>
-        <li><strong>Kernel:</strong> Lean, nanoda, tests, hashes.</li>
-        <li><strong>Frame:</strong> geometry as cost accounting.</li>
-        <li><strong>Signal:</strong> public repos, Pages atlases, essays.</li>
-      </ol>
+      <div class="cosmos-stage">
+        <canvas id="research-cosmos" aria-label="Interactive hyperbolic research tree"></canvas>
+        <div class="cosmos-chrome" aria-hidden="true">
+          <span>∞ / DOJO-1</span>
+          <span id="projection-label">POINCARÉ PROJECTION</span>
+          <span>2026 · OPEN SYSTEM</span>
+        </div>
+        <aside id="node-detail" class="node-detail" aria-live="polite">
+          <span class="node-index">00 · ORIGIN</span>
+          <h3>Jesús / research identity</h3>
+          <p>A human-controlled interface joining proof, geometry, systems,
+            and adversarial verification.</p>
+          <small>hover · focus · touch a node</small>
+        </aside>
+      </div>
+      <div class="cosmos-legend" aria-label="Research tree legend">
+        <span><i class="analytic"></i>analytic</span>
+        <span><i class="algebraic"></i>algebraic</span>
+        <span><i class="architectural"></i>architectural</span>
+        <span><i class="boundary"></i>boundary</span>
+      </div>
     </section>
 
     <section class="panel identity" aria-labelledby="identity-title">
@@ -101,7 +124,7 @@
       </article>
       <article class="card">
         <h3>No third-party ornaments</h3>
-        <p>This scaffold uses local CSS and inline SVG only: no analytics, fonts, badges, remote images, or JavaScript dependencies.</p>
+        <p>This site uses local HTML, CSS, SVG, JSON, and vanilla JavaScript only: no analytics, fonts, badges, remote images, or third-party dependencies.</p>
       </article>
       <article class="card">
         <h3>Evidence before aura</h3>
@@ -109,5 +132,6 @@
       </article>
     </section>
   </main>
+  <script src="viz.js"></script>
 </body>
 </html>
