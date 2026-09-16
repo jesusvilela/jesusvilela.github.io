@@ -9,6 +9,8 @@
   <meta name="theme-color" content="#080b12" />
   <link rel="canonical" href="https://jesusvilela.github.io/" />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_ES" />
   <meta property="og:url" content="https://jesusvilela.github.io/" />
   <meta property="og:site_name" content="Dojo-1 Public Research Observatory" />
   <meta property="og:title" content="Dojo-1 · Explore public systems built for doubt" />
@@ -54,7 +56,7 @@
       </nav>
       <div class="hero-coordinates" aria-label="Site orientation">
         <span>43.36° N · 8.41° W</span>
-        <span>PUBLIC RESEARCH SURFACE</span>
+        <span>OBSERVATORIO PÚBLICO · PUBLIC RESEARCH SURFACE</span>
         <span>HUMAN ↔ MACHINE ↔ PROOF</span>
       </div>
     </section>
@@ -201,15 +203,28 @@
       <header class="cosmos-head">
         <div>
           <p class="kicker">hypercomplex research manifold · interactive projection</p>
-          <h2 id="map-title">One identity. Many coordinate systems.</h2>
+          <h2 id="map-title">A map of related work.</h2>
         </div>
-        <p><span class="status s">S · visual metaphor</span><br />The geometry is an editorial map, not scientific evidence. Named systems link to public repositories; live modes fetch GitHub metadata.</p>
+        <p><span class="status s">S · hyperbolic projection / design metaphor</span><br />Follow the connections between public projects. The geometry is not scientific evidence; live modes fetch GitHub metadata.</p>
       </header>
       <div class="cosmos-switch" role="group" aria-label="Visualization dataset">
         <button class="active" type="button" data-cosmos="identity">identity manifold</button>
         <button type="button" data-cosmos="public">public constellation</button>
         <button type="button" data-cosmos="live">live repository pulse</button>
+        <button id="motion-toggle" type="button" aria-pressed="false">pause field</button>
       </div>
+      <details class="frame-ledger">
+        <summary><span class="status s">S · structural metaphor</span> Open the moving-frame ledger</summary>
+        <dl>
+          <div><dt>Viewport changes · frame</dt><dd>Device, pointer, motion preference, and network state may change.</dd></div>
+          <div><dt>Meaning stays · invariant</dt><dd>Repository, public link, and evidence status do not change with the frame.</dd></div>
+          <div><dt>Explore project · section</dt><dd>Each named node resolves to one explicit public source.</dd></div>
+          <div><dt>Follow connection · fiber</dt><dd>Lines show a visual relationship, not measured dependence.</dd></div>
+          <div><dt>Read the rule · boundary</dt><dd>P/M/H/S/R/CTA/Metadata constrains how each statement may be read.</dd></div>
+          <div><dt>See what changed · history</dt><dd>Metadata varies with time; corrections remain visible and prestigious.</dd></div>
+          <div><dt>Change the tone · framing</dt><dd>Supportive, neutral, and skeptical readings preserve the same source and status.</dd></div>
+        </dl>
+      </details>
       <div class="cosmos-stage">
         <canvas id="research-cosmos" tabindex="0" aria-label="Interactive hyperbolic research tree. Use left and right arrow keys to move between nodes, and Enter to open a selected public repository." aria-describedby="cosmos-help">Your browser does not support the interactive research map.</canvas>
         <div class="cosmos-chrome" aria-hidden="true">
@@ -233,6 +248,13 @@
         <span><i class="architectural"></i>architectural</span>
         <span><i class="boundary"></i>boundary</span>
       </div>
+      <section class="node-browser" aria-labelledby="node-browser-title">
+        <div>
+          <p class="kicker">semantic mirror · keyboard and screen-reader path</p>
+          <h3 id="node-browser-title">Explore every visible node.</h3>
+        </div>
+        <ol id="cosmos-node-list"></ol>
+      </section>
     </section>
 
     <section class="manifesto" aria-labelledby="manifesto-title">

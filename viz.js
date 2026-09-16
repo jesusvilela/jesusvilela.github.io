@@ -3,9 +3,14 @@
   const detail = document.querySelector("#node-detail");
   const liveState = document.querySelector("#live-state");
   const metadataStatus = document.querySelector("#metadata-status");
-  if (!canvas || !detail || !liveState || !metadataStatus) return;
+  const motionToggle = document.querySelector("#motion-toggle");
+  const nodeList = document.querySelector("#cosmos-node-list");
+  const stage = document.querySelector(".cosmos-stage");
+  if (!canvas || !detail || !liveState || !metadataStatus || !motionToggle || !nodeList || !stage) return;
 
   const ctx = canvas.getContext("2d");
+  canvas.classList.toggle("unavailable", !ctx);
+  stage.classList.toggle("canvas-unavailable", !ctx);
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const colors = {
     origin: "#f8f5ef",
@@ -48,14 +53,19 @@
   let selected = 0;
   let phase = 0;
   let repoCache = null;
+  let frameRequest = 0;
+  let canvasVisible = true;
+  let userPaused = false;
 
   function node(id, parent, ring, angle, type, title, text, url = "", evidence = "s") {
     return { id, parent, ring, angle, type, title, text, url, evidence };
   }
 
   function resize() {
+    if (!ctx) return;
     const box = canvas.getBoundingClientRect();
-    ratio = Math.min(devicePixelRatio || 1, 2);
+    const pixelBudgetRatio = Math.sqrt(2000000 / Math.max(box.width * box.height, 1));
+    ratio = Math.max(1, Math.min(devicePixelRatio || 1, 2, pixelBudgetRatio));
     width = box.width;
     height = box.height;
     canvas.width = Math.round(width * ratio);
@@ -156,6 +166,14 @@
         ? colors[item.type] : "rgba(248,245,239,.11)";
       ctx.lineWidth = index === selected ? 1.8 : .8;
       ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.quadraticCurveTo(bendX + 4, bendY - 4, b.x, b.y);
+      ctx.strokeStyle = index === selected
+        ? `${colors[item.type]}88` : "rgba(114,168,178,.055)";
+      ctx.lineWidth = .55;
+      ctx.stroke();
     });
 
     nodes.forEach((item, index) => {
@@ -182,8 +200,23 @@
         ctx.fillText(item.title.toUpperCase(), point.x + (point.x < center.x ? -13 : 13), point.y + 4);
       }
     });
-    phase += reduceMotion ? 0 : .008;
-    requestAnimationFrame(draw);
+    if (!reduceMotion) {
+      phase += .008;
+      requestDraw();
+    }
+  }
+
+  function shouldAnimate() {
+    return !reduceMotion && canvasVisible && !document.hidden && !userPaused;
+  }
+
+  function requestDraw() {
+    if (!ctx) return;
+    if (frameRequest || (phase > 0 && !shouldAnimate())) return;
+    frameRequest = requestAnimationFrame(() => {
+      frameRequest = 0;
+      draw();
+    });
   }
 
   function select(event) {
@@ -231,6 +264,31 @@
     }
     detail.replaceChildren(indexLabel, title, text, evidence, action);
     canvas.setAttribute("aria-label", `Selected: ${item.title}. ${item.text}${item.url ? " Press Enter to open its public repository." : ""}`);
+    nodeList.querySelectorAll("button").forEach((button, buttonIndex) => {
+      if (buttonIndex === index) button.setAttribute("aria-current", "true");
+      else button.removeAttribute("aria-current");
+    });
+    if (!shouldAnimate()) requestDraw();
+  }
+
+  function renderNodeList() {
+    const items = nodes.map((item, index) => {
+      const listItem = document.createElement("li");
+      const selectButton = document.createElement("button");
+      selectButton.type = "button";
+      selectButton.textContent = item.title;
+      selectButton.addEventListener("click", () => show(index));
+      listItem.append(selectButton);
+      if (item.url) {
+        const sourceLink = document.createElement("a");
+        sourceLink.href = item.url;
+        sourceLink.textContent = "source ↗";
+        sourceLink.setAttribute("aria-label", `Inspect public source for ${item.title}`);
+        listItem.append(sourceLink);
+      }
+      return listItem;
+    });
+    nodeList.replaceChildren(...items);
   }
 
   function buildPublicNodes(repos, evidence = "metadata") {
@@ -341,11 +399,17 @@
       button.classList.toggle("active", button.dataset.cosmos === next);
     });
     selected = 0;
+    renderNodeList();
     show(0);
     resize();
+    requestDraw();
   }
 
-  addEventListener("resize", resize);
+  addEventListener("resize", () => {
+    resize();
+    requestDraw();
+  });
+  document.addEventListener("visibilitychange", requestDraw);
   addEventListener("pointermove", (event) => {
     document.documentElement.style.setProperty("--px", `${event.clientX / innerWidth * 100}%`);
     document.documentElement.style.setProperty("--py", `${event.clientY / innerHeight * 100}%`);
@@ -363,6 +427,12 @@
       window.open(nodes[selected].url, "_blank", "noopener");
     }
   });
+  motionToggle.addEventListener("click", () => {
+    userPaused = !userPaused;
+    motionToggle.setAttribute("aria-pressed", String(userPaused));
+    motionToggle.textContent = userPaused ? "resume field" : "pause field";
+    if (!userPaused) requestDraw();
+  });
   document.querySelectorAll("[data-cosmos]").forEach((button) => {
     button.addEventListener("click", () => {
       switchMode(button.dataset.cosmos).catch(() => {
@@ -371,7 +441,18 @@
       });
     });
   });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      canvasVisible = entry.isIntersecting;
+      if (canvasVisible) requestDraw();
+    }, { rootMargin: "120px" }).observe(canvas);
+  }
   resize();
+  renderNodeList();
   show(0);
-  draw();
+  if (!ctx) {
+    liveState.textContent = "semantic public projection · canvas unavailable";
+    liveState.className = "live-state cached";
+  }
+  requestDraw();
 })();

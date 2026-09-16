@@ -59,6 +59,12 @@ geometric learning. Its live mode reads public GitHub metadata and links every
 named node to an inspectable repository.
 
 The canvas supports pointer, touch, and keyboard navigation. Use the arrow keys
-to select a node and Enter to open its public repository.
+to select a node and Enter to open its public repository. A semantic DOM mirror
+keeps every node and source link available without Canvas. The Canvas2D field
+is the complete baseline engine: it caps its pixel budget, pauses offscreen or
+when the document is hidden, offers a user pause, and renders one stable frame
+under reduced motion. A GPU enhancement is intentionally not shipped until a
+pinned Three.js WebGPU/WebGL2 island can be built and validated without making
+meaning, links, or evidence depend on it.
 
 <p align="center"><sub>Quiet systems · explicit obligations · proofs you can rebuild.</sub></p>
