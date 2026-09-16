@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Dojo-1 identity mark</title>
+  <desc id="desc">An open enso surrounding a small nested constellation.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8dcc2"/>
+      <stop offset=".52" stop-color="#6a8d92"/>
+      <stop offset="1" stop-color="#b76e79"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="72" fill="#080b12"/>
+  <circle cx="160" cy="160" r="113" fill="none" stroke="#f8f5ef" stroke-opacity=".12" stroke-width="2"/>
+  <path d="M245 89c-42-42-119-44-164-3-46 42-48 115-4 157 41 39 111 36 151-8 39-43 31-107-18-139" fill="none" stroke="url(#g)" stroke-width="19" stroke-linecap="round"/>
+  <path d="M219 226c-24 21-64 27-94 13" fill="none" stroke="#f8f5ef" stroke-opacity=".42" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="160" cy="160" r="35" fill="#f8f5ef" fill-opacity=".08" stroke="#e8dcc2" stroke-opacity=".75" stroke-width="2"/>
+  <circle cx="160" cy="160" r="7" fill="#e8dcc2"/>
+  <circle cx="160" cy="119" r="4" fill="#6a8d92"/>
+  <circle cx="198" cy="181" r="4" fill="#b76e79"/>
+  <circle cx="124" cy="187" r="4" fill="#6a8d92"/>
+  <path d="M160 119v34M198 181l-29-17M124 187l29-23" stroke="#f8f5ef" stroke-opacity=".24"/>
+</svg>
