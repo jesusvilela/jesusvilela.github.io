@@ -50,15 +50,20 @@ aggregate of 717 `.semantic` chunks—counts and public strata only, with no raw
 text, hashes, local paths, branches, or private metadata. Hover or touch a node
 to inspect its role.
 
+The **live braided atlas** places that private-safe EAVS projection beside
+live public metadata from `Dojo-1/doubt-the-machine`. Their shared fibers are
+proof kernels, falsifiers, provenance, boundary discipline, and public
+translation. EAVS is never queried from the browser because it is private.
+
 ## No-leak protocol
 
 - Private or permissioned work is represented by capability class, never by
   hidden repository names, file trees, branches, issue lists, or screenshots.
 - Public links go only to public repositories, papers, tests, releases, or
   explicitly caveated summaries.
-- The site uses local HTML/CSS/SVG/JSON and vanilla JavaScript only: no
-  analytics, remote fonts, badge services, trackers, or third-party
-  dependencies.
+- The site uses local HTML/CSS/SVG/JSON and vanilla JavaScript: no analytics,
+  remote fonts, badge services, trackers, or third-party libraries. Live mode
+  reads only public GitHub repository metadata.
 - The profile remains a human-controlled publication surface; no generated
   text is treated as proof merely because it sounds certain.
 

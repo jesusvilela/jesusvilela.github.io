@@ -1,6 +1,7 @@
 (() => {
   const canvas = document.querySelector("#research-cosmos");
   const detail = document.querySelector("#node-detail");
+  const liveState = document.querySelector("#live-state");
   if (!canvas || !detail) return;
 
   const ctx = canvas.getContext("2d");
@@ -40,6 +41,8 @@
   ];
   let nodes = identityNodes;
   let semanticNodes = null;
+  let blendNodes = null;
+  let mode = "identity";
 
   let width = 0;
   let height = 0;
@@ -63,6 +66,16 @@
     const cx = compact ? width / 2 : width * .43;
     const cy = height * .5;
     const max = Math.min(compact ? width : width * .72, height) * .42;
+    if (mode === "blend" && node.braid) {
+      const t = node.braid.t;
+      const axisX = width * (.13 + .59 * t);
+      const amplitude = Math.min(width, height) * (.11 + .025 * node.braid.depth);
+      const sign = node.braid.side === "upper" ? -1 : 1;
+      return {
+        x: axisX,
+        y: cy + sign * amplitude * Math.sin(Math.PI * t) + (node.braid.offset || 0)
+      };
+    }
     if (!node.ring) return { x: cx, y: cy };
     const radial = max * (1 - Math.exp(-.62 * node.ring)) / (1 - Math.exp(-1.86));
     const drift = reduceMotion ? 0 : Math.sin(phase * .45 + node.id) * 2.2;
@@ -105,6 +118,26 @@
       ctx.stroke();
     });
     ctx.setLineDash([]);
+
+    if (mode === "blend") {
+      for (let strand = 0; strand < 5; strand += 1) {
+        ctx.beginPath();
+        for (let step = 0; step <= 120; step += 1) {
+          const t = step / 120;
+          const x = width * (.1 + .66 * t);
+          const y = height * .5
+            + Math.sin(t * Math.PI * 4 + strand * 1.22 + phase * .8)
+            * Math.min(width, height) * (.055 + strand * .008);
+          if (!step) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = strand % 2
+          ? "rgba(114,168,178,.11)"
+          : "rgba(199,125,137,.10)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
 
     nodes.forEach((node, i) => {
       if (node.parent === null) return;
@@ -202,21 +235,89 @@
     return result;
   }
 
+  function buildBlendNodes(repo, languages, commits) {
+    const languageList = Object.entries(languages)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 4);
+    const latest = commits[0];
+    const result = [
+      { id: 0, parent: null, ring: 0, angle: 0, type: "origin", title: "Dojo-1 overlap atlas", text: "Two research fibers joined by explicit public overlap maps: proof, doubt, provenance, and boundary." },
+      { id: 1, parent: 0, ring: 1, angle: Math.PI, type: "analytic", title: "EAVS-MMF · private fiber", text: "Sanitized static projection only: 717 semantic chunks. No browser request reaches the private repository.", braid: { t: .06, side: "upper", depth: 2 } },
+      { id: 2, parent: 0, ring: 1, angle: 0, type: "boundary", title: "doubt-the-machine · live fiber", text: `${repo.description} Updated ${new Date(repo.updated_at).toLocaleDateString()}.`, braid: { t: .94, side: "lower", depth: 2 } },
+      { id: 3, parent: 1, ring: 2, angle: 0, type: "algebraic", title: "proof kernels", text: "Lean, nanoda, deterministic tests, and exact symbolic witnesses form the common algebraic fiber.", braid: { t: .24, side: "upper", depth: 1 } },
+      { id: 4, parent: 2, ring: 2, angle: 0, type: "boundary", title: "falsifier membrane", text: "Failure modes, reversal conditions, and cheap rollback connect research claims to operational verification.", braid: { t: .72, side: "lower", depth: 1 } },
+      { id: 5, parent: 3, ring: 2, angle: 0, type: "architectural", title: "provenance overlap", text: "Semantic chunks and deterministic traces preserve ancestry across the two coordinate systems.", braid: { t: .42, side: "upper", depth: 3 } },
+      { id: 6, parent: 4, ring: 2, angle: 0, type: "architectural", title: "public translation", text: "Private-safe research topology meets a public API and documentation surface without crossing the data boundary.", braid: { t: .56, side: "lower", depth: 3 } },
+      { id: 7, parent: 5, ring: 3, angle: 0, type: "analytic", title: "373 research sections", text: "Sanitized EAVS research stratum count; content remains in its protected fiber.", braid: { t: .32, side: "upper", depth: 4, offset: -42 } },
+      { id: 8, parent: 5, ring: 3, angle: 0, type: "algebraic", title: "240 executable tests", text: "The EAVS semantic mirror exposes test volume, not test internals.", braid: { t: .39, side: "lower", depth: 4, offset: 52 } },
+      { id: 9, parent: 4, ring: 3, angle: 0, type: "boundary", title: `latest · ${latest.sha.slice(0, 7)}`, text: `${latest.commit.message.split("\n")[0]} · ${new Date(latest.commit.author.date).toLocaleString()}`, braid: { t: .79, side: "upper", depth: 4, offset: -38 } },
+      { id: 10, parent: 2, ring: 3, angle: 0, type: "boundary", title: `${repo.stargazers_count} stars · ${repo.forks_count} forks`, text: "Live public GitHub metadata; popularity is not evidence quality.", braid: { t: .87, side: "lower", depth: 4, offset: 42 } }
+    ];
+    languageList.forEach(([language, bytes], index) => {
+      result.push({
+        id: result.length, parent: 2, ring: 3, angle: 0,
+        type: index ? "architectural" : "algebraic",
+        title: `${language} · ${bytes.toLocaleString()} bytes`,
+        text: "Live public language distribution reported by GitHub.",
+        braid: { t: .77 + index * .045, side: index % 2 ? "upper" : "lower", depth: 5, offset: (index - 1.5) * 34 }
+      });
+    });
+    return result;
+  }
+
+  async function loadBlend() {
+    liveState.textContent = "querying public GitHub metadata · EAVS remains local";
+    liveState.className = "live-state cached";
+    const headers = { Accept: "application/vnd.github+json" };
+    const [repoResponse, languageResponse, commitResponse] = await Promise.all([
+      fetch("https://api.github.com/repos/Dojo-1/doubt-the-machine", { headers }),
+      fetch("https://api.github.com/repos/Dojo-1/doubt-the-machine/languages", { headers }),
+      fetch("https://api.github.com/repos/Dojo-1/doubt-the-machine/commits?per_page=3", { headers })
+    ]);
+    if (![repoResponse, languageResponse, commitResponse].every((response) => response.ok)) {
+      throw new Error("public GitHub metadata unavailable");
+    }
+    blendNodes = buildBlendNodes(
+      await repoResponse.json(),
+      await languageResponse.json(),
+      await commitResponse.json()
+    );
+    liveState.textContent = `live public signal · refreshed ${new Date().toLocaleTimeString()} · private fiber sanitized`;
+    liveState.className = "live-state online";
+  }
+
   async function switchCosmos(mode) {
     if (mode === "semantic" && !semanticNodes) {
       const response = await fetch("semantic-map.json");
       if (!response.ok) throw new Error("semantic projection unavailable");
       semanticNodes = buildSemanticNodes(await response.json());
     }
-    nodes = mode === "semantic" ? semanticNodes : identityNodes;
+    if (mode === "blend" && !blendNodes) await loadBlend();
+    nodes = mode === "semantic"
+      ? semanticNodes
+      : mode === "blend" ? blendNodes : identityNodes;
+    window.requestAnimationFrame(() => resize());
+    currentMode(mode);
     hover = 0;
     const node = nodes[0];
     detail.innerHTML = `<span class="node-index">00 · ${node.type}</span><h3>${node.title}</h3><p>${node.text}</p><small>stratum 0 · ${mode} projection</small>`;
     document.querySelector("#projection-label").textContent =
-      mode === "semantic" ? "SANITIZED .SEMANTIC PROJECTION" : "POINCARÉ PROJECTION";
+      mode === "semantic"
+        ? "SANITIZED .SEMANTIC PROJECTION"
+        : mode === "blend" ? "LIVE BRAIDED SHEAF ATLAS" : "POINCARÉ PROJECTION";
     document.querySelectorAll("[data-cosmos]").forEach((button) => {
       button.classList.toggle("active", button.dataset.cosmos === mode);
     });
+    if (mode !== "blend") {
+      liveState.textContent = mode === "semantic"
+        ? "local sanitized aggregate · no private network request"
+        : "local projection · no network request";
+      liveState.className = "live-state";
+    }
+  }
+
+  function currentMode(next) {
+    mode = next;
   }
 
   addEventListener("resize", resize);

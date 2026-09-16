@@ -76,6 +76,7 @@
       <div class="cosmos-switch" role="group" aria-label="Visualization dataset">
         <button class="active" type="button" data-cosmos="identity">identity manifold</button>
         <button type="button" data-cosmos="semantic">EAVS semantic mirror</button>
+        <button type="button" data-cosmos="blend">live braided atlas</button>
       </div>
       <div class="cosmos-stage">
         <canvas id="research-cosmos" aria-label="Interactive hyperbolic research tree"></canvas>
@@ -91,6 +92,7 @@
             and adversarial verification.</p>
           <small>hover · focus · touch a node</small>
         </aside>
+        <div id="live-state" class="live-state" aria-live="polite">local projection · no network request</div>
       </div>
       <div class="cosmos-legend" aria-label="Research tree legend">
         <span><i class="analytic"></i>analytic</span>
@@ -124,7 +126,7 @@
       </article>
       <article class="card">
         <h3>No third-party ornaments</h3>
-        <p>This site uses local HTML, CSS, SVG, JSON, and vanilla JavaScript only: no analytics, fonts, badges, remote images, or third-party dependencies.</p>
+        <p>This site uses local HTML, CSS, SVG, JSON, and vanilla JavaScript: no analytics, fonts, badges, remote images, or third-party libraries. Live mode reads public GitHub repository metadata only.</p>
       </article>
       <article class="card">
         <h3>Evidence before aura</h3>

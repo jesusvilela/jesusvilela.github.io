@@ -163,6 +163,8 @@ h3 { font-size: 1.35rem; letter-spacing: -.025em; }
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(8,11,18,.56);
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .cosmos-switch button {
@@ -235,6 +237,19 @@ h3 { font-size: 1.35rem; letter-spacing: -.025em; }
 }
 .node-detail small { display: block; margin-top: 16px; color: rgba(248,245,239,.34); }
 
+.live-state {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  color: rgba(248,245,239,.3);
+  font: 9px/1 ui-monospace, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.live-state.online { color: #72a8b2; }
+.live-state.cached { color: var(--gold); }
+
 .cosmos-legend {
   display: flex;
   flex-wrap: wrap;
@@ -285,6 +300,7 @@ h3 { font-size: 1.35rem; letter-spacing: -.025em; }
   .hero { min-height: 64vh; }
   .cosmos-stage, #research-cosmos { min-height: 640px; height: 640px; }
   .node-detail { right: 14px; bottom: 14px; left: 14px; width: auto; }
+  .live-state { bottom: 190px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
