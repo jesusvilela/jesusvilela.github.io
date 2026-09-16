@@ -2,7 +2,8 @@
   const canvas = document.querySelector("#research-cosmos");
   const detail = document.querySelector("#node-detail");
   const liveState = document.querySelector("#live-state");
-  if (!canvas || !detail || !liveState) return;
+  const metadataStatus = document.querySelector("#metadata-status");
+  if (!canvas || !detail || !liveState || !metadataStatus) return;
 
   const ctx = canvas.getContext("2d");
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -25,19 +26,19 @@
     ["jesusvilela", "generational-autoresearch", "analytic"]
   ];
   const identityNodes = [
-    node(0, null, 0, 0, "origin", "Jesús / research identity", "A public interface joining proof, geometry, systems, and adversarial verification."),
-    node(1, 0, 1, -1.45, "analytic", "Geometric intelligence", "Information geometry, bundles, sheaves, and hyperbolic representation."),
+    node(0, null, 0, 0, "origin", "Jesús / research identity", "A public interface joining proof, geometry, systems, and adversarial verification.", "", "s"),
+    node(1, 0, 1, -1.45, "analytic", "Geometric intelligence", "Information geometry, bundles, sheaves, and hyperbolic representation.", "", "h"),
     node(2, 0, 1, -.15, "algebraic", "Proof engineering", "Lean, symbolic tests, exact witnesses, and rebuildable theorem footprints."),
     node(3, 0, 1, 1.12, "architectural", "Context systems", "Semantic versioning, context compilation, and AI orchestration."),
     node(4, 0, 1, 2.4, "boundary", "Adversarial clarity", "Verification APIs, falsifiers, provenance, and reversible experiments."),
-    node(5, 1, 2, -1.78, "analytic", "IGBundle-LLM", "Information-geometric and bundle-aware language-model adaptation.", "https://github.com/jesusvilela/IGBundle-LLM"),
-    node(6, 1, 2, -1.12, "analytic", "generational-autoresearch", "AI agents running research on public infrastructure.", "https://github.com/jesusvilela/generational-autoresearch"),
-    node(7, 2, 2, -.48, "algebraic", "connection Laplacian", "Formal finite-graph mathematics in Lean.", "https://github.com/jesusvilela/connection_laplacian_lean"),
-    node(8, 2, 2, .14, "algebraic", "lambda SAT solver", "Certified structured-region SAT middleware.", "https://github.com/jesusvilela/lambda-sat-solver"),
+    node(5, 1, 2, -1.78, "analytic", "IGBundle-LLM", "Information-geometric and bundle-aware language-model adaptation.", "https://github.com/jesusvilela/IGBundle-LLM", "h"),
+    node(6, 1, 2, -1.12, "analytic", "generational-autoresearch", "AI agents running research on public infrastructure.", "https://github.com/jesusvilela/generational-autoresearch", "s"),
+    node(7, 2, 2, -.48, "algebraic", "connection Laplacian", "Formal finite-graph mathematics in Lean.", "https://github.com/jesusvilela/connection_laplacian_lean", "p"),
+    node(8, 2, 2, .14, "algebraic", "lambda SAT solver", "Certified structured-region SAT middleware.", "https://github.com/jesusvilela/lambda-sat-solver", "p"),
     node(9, 3, 2, .76, "architectural", "aigit", "AI-native semantic version control built on Git.", "https://github.com/jesusvilela/aigit"),
     node(10, 3, 2, 1.38, "architectural", "trasgo", "Context compilation with a clever, local-first interface.", "https://github.com/jesusvilela/trasgo"),
     node(11, 3, 2, 2.0, "boundary", "NETTRACER", "Route, observe, replay, and audit multiple AI runtimes.", "https://github.com/jesusvilela/NETTRACER"),
-    node(12, 4, 2, 2.62, "boundary", "doubt-the-machine", "A deterministic framework for using AI without being fooled.", "https://github.com/Dojo-1/doubt-the-machine")
+    node(12, 4, 2, 2.62, "boundary", "doubt-the-machine", "A deterministic framework for using AI without being fooled.", "https://github.com/Dojo-1/doubt-the-machine", "p")
   ];
   let nodes = identityNodes;
   let mode = "identity";
@@ -46,9 +47,10 @@
   let ratio = 1;
   let selected = 0;
   let phase = 0;
+  let repoCache = null;
 
-  function node(id, parent, ring, angle, type, title, text, url = "") {
-    return { id, parent, ring, angle, type, title, text, url };
+  function node(id, parent, ring, angle, type, title, text, url = "", evidence = "s") {
+    return { id, parent, ring, angle, type, title, text, url, evidence };
   }
 
   function resize() {
@@ -75,6 +77,50 @@
     };
   }
 
+  function drawInstrumentField(center) {
+    ctx.save();
+    ctx.lineWidth = .7;
+
+    for (let row = 0; row < 7; row += 1) {
+      const baseY = height * (.18 + row * .075);
+      ctx.beginPath();
+      for (let step = 0; step <= 28; step += 1) {
+        const x = width * step / 28;
+        const distance = Math.abs(x - center.x) / Math.max(width, 1);
+        const wave = Math.sin(step * .72 + row * .84 + phase * .35) * (8 + row * 2);
+        const y = baseY + wave * (1 - distance * .55);
+        if (step === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = `rgba(114,168,178,${.025 + row * .008})`;
+      ctx.stroke();
+    }
+
+    for (let spoke = -5; spoke <= 5; spoke += 1) {
+      ctx.beginPath();
+      ctx.moveTo(center.x, center.y);
+      ctx.lineTo(center.x + spoke * width * .12, height);
+      ctx.strokeStyle = "rgba(183,110,121,.035)";
+      ctx.stroke();
+    }
+
+    const attributes = ["#1d59ff", "#e6d830", "#c13c78", "#72a8b2"];
+    attributes.forEach((color, index) => {
+      ctx.fillStyle = color;
+      ctx.fillRect(18 + index * 12, height - 20, 8, 4);
+    });
+
+    if (!reduceMotion) {
+      ctx.fillStyle = "rgba(248,245,239,.045)";
+      for (let y = 12; y < height; y += 24) {
+        for (let x = 12; x < width; x += 24) {
+          if ((x / 12 + y / 12) % 5 === 0) ctx.fillRect(x, y, 1, 1);
+        }
+      }
+    }
+    ctx.restore();
+  }
+
   function draw() {
     ctx.clearRect(0, 0, width, height);
     const points = nodes.map(position);
@@ -85,6 +131,7 @@
     glow.addColorStop(1, "rgba(8,11,18,0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, width, height);
+    drawInstrumentField(center);
 
     [1, 2, 3].forEach((ring) => {
       const sample = position({ ring, angle: 0, id: 80 + ring });
@@ -156,12 +203,41 @@
     if (!nodes[index]) return;
     selected = index;
     const item = nodes[index];
-    const action = item.url ? `<a href="${item.url}">open public repository ↗</a>` : "hover · touch a node";
-    detail.innerHTML = `<span class="node-index">${String(item.id).padStart(2, "0")} · ${item.type}</span><h3>${item.title}</h3><p>${item.text}</p><small>${action}</small>`;
+    const evidenceLabels = {
+      metadata: "Metadata · repository fact",
+      p: "P · inspectable artifact",
+      h: "H · hypothesis",
+      s: "S · metaphor / proposal"
+    };
+    const indexLabel = document.createElement("span");
+    const title = document.createElement("h3");
+    const text = document.createElement("p");
+    const evidence = document.createElement("span");
+    const action = document.createElement("small");
+    indexLabel.className = "node-index";
+    indexLabel.textContent = `${String(item.id).padStart(2, "0")} · ${item.type}`;
+    title.textContent = item.title;
+    text.textContent = item.text;
+    evidence.className = `status ${item.evidence}`;
+    evidence.textContent = evidenceLabels[item.evidence];
+    action.id = "cosmos-help";
+    if (item.url) {
+      const link = document.createElement("a");
+      link.href = item.url;
+      link.textContent = "open public repository ↗";
+      action.append(link);
+    } else {
+      action.textContent = "hover · touch · arrow keys to select";
+    }
+    detail.replaceChildren(indexLabel, title, text, evidence, action);
+    canvas.setAttribute("aria-label", `Selected: ${item.title}. ${item.text}${item.url ? " Press Enter to open its public repository." : ""}`);
   }
 
-  function buildPublicNodes(repos) {
-    const result = [node(0, null, 0, 0, "origin", `${repos.length} public systems`, "A live constellation of available, inspectable GitHub repositories.")];
+  function buildPublicNodes(repos, evidence = "metadata") {
+    const description = evidence === "metadata"
+      ? "A live constellation built from public GitHub repository facts."
+      : "A curated constellation of public, inspectable repositories.";
+    const result = [node(0, null, 0, 0, "origin", `${repos.length} public systems`, description, "", evidence)];
     const groups = new Map();
     repos.forEach((repo) => {
       const language = repo.language || "Other";
@@ -173,14 +249,18 @@
       const angle = -Math.PI / 2 + index * Math.PI * 2 / entries.length;
       const type = ["algebraic", "architectural", "analytic", "boundary"][index % 4];
       const parent = result.length;
-      result.push(node(parent, 0, 1, angle, type, `${language} · ${reposInLanguage.length}`, `Public systems whose primary GitHub language is ${language}.`));
+      const groupText = evidence === "metadata"
+        ? `Public systems whose primary GitHub language is ${language}.`
+        : "An editorial grouping of public systems; inspect each repository for technical detail.";
+      result.push(node(parent, 0, 1, angle, type, `${language} · ${reposInLanguage.length}`, groupText, "", evidence));
       reposInLanguage.forEach((repo, childIndex) => {
         const spread = (childIndex - (reposInLanguage.length - 1) / 2) * .18;
         result.push(node(
           result.length, parent, 2, angle + spread, type,
-          `${repo.name} · ★${repo.stars}`,
+          evidence === "metadata" ? `${repo.name} · ★${repo.stars}` : repo.name,
           repo.description || "Public research and engineering artifact.",
-          repo.url
+          repo.url,
+          evidence
         ));
       });
     });
@@ -188,16 +268,29 @@
   }
 
   async function fetchRepos() {
+    if (repoCache) return repoCache;
     liveState.textContent = "reading public GitHub metadata";
     liveState.className = "live-state cached";
-    const responses = await Promise.all(publicRepos.map(([owner, repo]) =>
-      fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+    const rateResponse = await fetch("https://api.github.com/rate_limit", {
+      headers: { Accept: "application/vnd.github+json" }
+    });
+    if (!rateResponse.ok) throw new Error("public metadata status unavailable");
+    const rate = await rateResponse.json();
+    if ((rate.resources?.core?.remaining ?? 0) < 2) {
+      throw new Error("public metadata rate limit reached");
+    }
+    const responses = await Promise.all([
+      "https://api.github.com/users/jesusvilela/repos?per_page=100",
+      "https://api.github.com/orgs/Dojo-1/repos?per_page=100"
+    ].map((url) =>
+      fetch(url, {
         headers: { Accept: "application/vnd.github+json" }
       })
     ));
     if (!responses.every((response) => response.ok)) throw new Error("public metadata unavailable");
-    const repos = await Promise.all(responses.map(async (response) => {
-      const repo = await response.json();
+    const payloads = await Promise.all(responses.map((response) => response.json()));
+    const selectedNames = new Set(publicRepos.map(([owner, repo]) => `${owner}/${repo}`.toLowerCase()));
+    const repos = payloads.flat().filter((repo) => selectedNames.has(repo.full_name.toLowerCase())).map((repo) => {
       return {
         name: repo.name,
         description: repo.description,
@@ -206,11 +299,18 @@
         url: repo.html_url,
         updated: repo.updated_at
       };
-    }));
+    });
+    if (repos.length !== publicRepos.length) throw new Error("public metadata incomplete");
     document.querySelector("#repo-count").textContent = String(repos.length).padStart(2, "0");
     document.querySelector("#star-count").textContent = String(repos.reduce((sum, repo) => sum + repo.stars, 0)).padStart(2, "0");
-    document.querySelector("#pulse-date").textContent = `refreshed ${new Date().toLocaleTimeString()}`;
-    return repos;
+    document.querySelector("#pulse-date").textContent = `metadata · refreshed ${new Date().toLocaleTimeString()}`;
+    metadataStatus.textContent = "metadata · live GitHub data, never proof quality";
+    repoCache = repos;
+    if (mode === "identity") {
+      liveState.textContent = "local public projection · metadata connected";
+      liveState.className = "live-state online";
+    }
+    return repoCache;
   }
 
   async function switchMode(next) {
@@ -219,13 +319,21 @@
       nodes = identityNodes;
       liveState.textContent = "local public projection";
       liveState.className = "live-state";
+    } else if (next === "public") {
+      const repos = publicRepos.map(([owner, repo], index) => ({
+        name: repo,
+        description: "Public research and engineering artifact. Open the repository for its current scope and evidence.",
+        language: ["verification", "infrastructure", "formal systems"][index % 3],
+        url: `https://github.com/${owner}/${repo}`
+      }));
+      nodes = buildPublicNodes(repos, "p");
+      liveState.textContent = `${repos.length} curated public repositories · P`;
+      liveState.className = "live-state";
     } else {
       const repos = await fetchRepos();
       nodes = buildPublicNodes(repos);
-      liveState.textContent = next === "live"
-        ? `live public pulse · refreshed ${new Date().toLocaleTimeString()}`
-        : `${repos.length} available public repositories`;
-      liveState.className = next === "live" ? "live-state online" : "live-state";
+      liveState.textContent = `live public pulse · refreshed ${new Date().toLocaleTimeString()}`;
+      liveState.className = "live-state online";
     }
     document.querySelector("#projection-label").textContent = next === "identity"
       ? "POINCARÉ PROJECTION" : next === "live" ? "LIVE REPOSITORY PULSE" : "PUBLIC CONSTELLATION";
@@ -244,9 +352,16 @@
   }, { passive: true });
   canvas.addEventListener("pointermove", select);
   canvas.addEventListener("pointerdown", select);
-  detail.addEventListener("click", (event) => {
-    const link = event.target.closest("a");
-    if (link) window.open(link.href, "_blank", "noopener");
+  canvas.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      event.preventDefault();
+      show((selected + 1) % nodes.length);
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      event.preventDefault();
+      show((selected - 1 + nodes.length) % nodes.length);
+    } else if (event.key === "Enter" && nodes[selected].url) {
+      window.open(nodes[selected].url, "_blank", "noopener");
+    }
   });
   document.querySelectorAll("[data-cosmos]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -257,5 +372,6 @@
     });
   });
   resize();
+  show(0);
   draw();
 })();
