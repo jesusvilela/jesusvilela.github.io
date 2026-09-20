@@ -24,6 +24,7 @@
     ["jesusvilela", "Topos-Trasgo", "architectural"],
     ["jesusvilela", "generational-autoresearch", "analytic"]
   ];
+  const hfAccount = "jesusvilela";
   const identityNodes = [
     node(0, null, 0, 0, "origin", "Jesús / research identity", "A public interface joining proof, geometry, systems, and adversarial verification."),
     node(1, 0, 1, -1.45, "analytic", "Geometric intelligence", "Information geometry, bundles, sheaves, and hyperbolic representation."),
@@ -156,61 +157,96 @@
     if (!nodes[index]) return;
     selected = index;
     const item = nodes[index];
-    const action = item.url ? `<a href="${item.url}">open public repository ↗</a>` : "hover · touch a node";
+    const action = item.url ? `<a href="${item.url}">open public artifact ↗</a>` : "hover · touch a node";
     detail.innerHTML = `<span class="node-index">${String(item.id).padStart(2, "0")} · ${item.type}</span><h3>${item.title}</h3><p>${item.text}</p><small>${action}</small>`;
   }
 
-  function buildPublicNodes(repos) {
-    const result = [node(0, null, 0, 0, "origin", `${repos.length} public systems`, "A live constellation of available, inspectable GitHub repositories.")];
-    const groups = new Map();
-    repos.forEach((repo) => {
-      const language = repo.language || "Other";
-      if (!groups.has(language)) groups.set(language, []);
-      groups.get(language).push(repo);
+  function buildUnifiedNodes(githubRepos, hfArtifacts) {
+    const total = githubRepos.length + hfArtifacts.length;
+    const result = [node(0, null, 0, 0, "origin", `${total} public artifacts`, "One research identity projected across GitHub source/proof lineage and Hugging Face model/data/Space execution.")];
+
+    const ghParent = result.length;
+    result.push(node(ghParent, 0, 1, -2.15, "boundary", `GitHub · ${githubRepos.length}`, "Source, proof, provenance, correction history, and rebuildable engineering artifacts.", "https://github.com/Dojo-1"));
+
+    const ghSpan = 1.7;
+    githubRepos.forEach((repo, index) => {
+      const divisor = Math.max(githubRepos.length - 1, 1);
+      const angle = -2.15 - ghSpan / 2 + ghSpan * (index / divisor);
+      result.push(node(result.length, ghParent, 2, angle, repo.type || "boundary", `${repo.name} · ${repo.language || "repo"}`, repo.description || "Public source artifact.", repo.url));
     });
-    const entries = [...groups.entries()];
-    entries.forEach(([language, reposInLanguage], index) => {
-      const angle = -Math.PI / 2 + index * Math.PI * 2 / entries.length;
-      const type = ["algebraic", "architectural", "analytic", "boundary"][index % 4];
+
+    const hfParent = result.length;
+    result.push(node(hfParent, 0, 1, .75, "analytic", `Hugging Face · ${hfArtifacts.length}`, "Models, datasets, and Spaces: the public execution plane for research artifacts.", `https://huggingface.co/${hfAccount}`));
+
+    const kinds = [["model", -.05, "analytic"], ["dataset", .85, "algebraic"], ["space", 1.75, "architectural"]];
+    kinds.forEach(([kind, angle, type]) => {
+      const allItems = hfArtifacts.filter((item) => item.kind === kind).sort((a, b) => new Date(b.updated || 0) - new Date(a.updated || 0));
+      if (!allItems.length) return;
       const parent = result.length;
-      result.push(node(parent, 0, 1, angle, type, `${language} · ${reposInLanguage.length}`, `Public systems whose primary GitHub language is ${language}.`));
-      reposInLanguage.forEach((repo, childIndex) => {
-        const spread = (childIndex - (reposInLanguage.length - 1) / 2) * .18;
-        result.push(node(
-          result.length, parent, 2, angle + spread, type,
-          `${repo.name} · ★${repo.stars}`,
-          repo.description || "Public research and engineering artifact.",
-          repo.url
-        ));
+      result.push(node(parent, hfParent, 2, angle, type, `${kind}s · ${allItems.length}`, `Public Hugging Face ${kind}s. The six most recently updated are projected here.`, `https://huggingface.co/${hfAccount}`));
+      const items = allItems.slice(0, 6);
+      items.forEach((item, childIndex) => {
+        const spread = (childIndex - (items.length - 1) / 2) * .14;
+        result.push(node(result.length, parent, 3, angle + spread, type, `${item.name} · ${kind}`, item.description || `Public Hugging Face ${kind} artifact.`, item.url));
       });
     });
     return result;
   }
 
-  async function fetchRepos() {
-    liveState.textContent = "reading public GitHub metadata";
-    liveState.className = "live-state cached";
-    const responses = await Promise.all(publicRepos.map(([owner, repo]) =>
-      fetch(`https://api.github.com/repos/${owner}/${repo}`, {
-        headers: { Accept: "application/vnd.github+json" }
-      })
+  async function fetchGitHubRepos() {
+    const responses = await Promise.all(publicRepos.map(([owner, repo, type]) =>
+      fetch(`https://api.github.com/repos/${owner}/${repo}`, { headers: { Accept: "application/vnd.github+json" } }).then(async (response) => ({ response, type }))
     ));
-    if (!responses.every((response) => response.ok)) throw new Error("public metadata unavailable");
-    const repos = await Promise.all(responses.map(async (response) => {
+    if (!responses.every(({ response }) => response.ok)) throw new Error("GitHub public metadata unavailable");
+    const repos = await Promise.all(responses.map(async ({ response, type }) => {
       const repo = await response.json();
-      return {
-        name: repo.name,
-        description: repo.description,
-        language: repo.language,
-        stars: repo.stargazers_count,
-        url: repo.html_url,
-        updated: repo.updated_at
-      };
+      return { name: repo.name, description: repo.description, language: repo.language, url: repo.html_url, updated: repo.updated_at, type };
     }));
-    document.querySelector("#repo-count").textContent = String(repos.length).padStart(2, "0");
-    document.querySelector("#star-count").textContent = String(repos.reduce((sum, repo) => sum + repo.stars, 0)).padStart(2, "0");
-    document.querySelector("#pulse-date").textContent = `refreshed ${new Date().toLocaleTimeString()}`;
+    const count = document.querySelector("#repo-count");
+    if (count) count.textContent = String(repos.length).padStart(2, "0");
     return repos;
+  }
+
+  async function fetchHuggingFace() {
+    const specs = [
+      ["model", `https://huggingface.co/api/models?author=${hfAccount}&limit=100&full=true`],
+      ["dataset", `https://huggingface.co/api/datasets?author=${hfAccount}&limit=100&full=true`],
+      ["space", `https://huggingface.co/api/spaces?author=${hfAccount}&limit=100&full=true`]
+    ];
+    const groups = await Promise.all(specs.map(async ([kind, url]) => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) return [];
+        const payload = await response.json();
+        if (!Array.isArray(payload)) return [];
+        return payload.map((item) => {
+          const id = item.id || item.modelId || "";
+          const name = id.split("/").pop() || id || kind;
+          const prefix = kind === "dataset" ? "datasets/" : kind === "space" ? "spaces/" : "";
+          const description = item.cardData?.short_description || item.pipeline_tag || item.sdk || (Array.isArray(item.tags) ? item.tags.slice(0, 3).join(" · ") : "");
+          return { name, kind, description, updated: item.lastModified || item.createdAt || "", url: `https://huggingface.co/${prefix}${id}` };
+        });
+      } catch {
+        return [];
+      }
+    }));
+    const artifacts = groups.flat();
+    const count = document.querySelector("#hf-count");
+    if (count) count.textContent = String(artifacts.length).padStart(2, "0");
+    return artifacts;
+  }
+
+  let publicCache = null;
+
+  async function fetchPublicSurface(force = false) {
+    if (publicCache && !force) return publicCache;
+    liveState.textContent = "resolving GitHub ↔ Hugging Face";
+    liveState.className = "live-state cached";
+    const [github, huggingface] = await Promise.all([fetchGitHubRepos(), fetchHuggingFace()]);
+    publicCache = { github, huggingface };
+    const pulse = document.querySelector("#pulse-date");
+    if (pulse) pulse.textContent = `refreshed ${new Date().toLocaleTimeString()}`;
+    return publicCache;
   }
 
   async function switchMode(next) {
@@ -220,15 +256,16 @@
       liveState.textContent = "local public projection";
       liveState.className = "live-state";
     } else {
-      const repos = await fetchRepos();
-      nodes = buildPublicNodes(repos);
+      const surface = await fetchPublicSurface(next === "live");
+      nodes = buildUnifiedNodes(surface.github, surface.huggingface);
       liveState.textContent = next === "live"
-        ? `live public pulse · refreshed ${new Date().toLocaleTimeString()}`
-        : `${repos.length} available public repositories`;
+        ? `live · GitHub ${surface.github.length} ↔ HF ${surface.huggingface.length} · ${new Date().toLocaleTimeString()}`
+        : `unified public surface · ${surface.github.length + surface.huggingface.length} artifacts`;
       liveState.className = next === "live" ? "live-state online" : "live-state";
     }
     document.querySelector("#projection-label").textContent = next === "identity"
-      ? "POINCARÉ PROJECTION" : next === "live" ? "LIVE REPOSITORY PULSE" : "PUBLIC CONSTELLATION";
+      ? "POINCARÉ PROJECTION"
+      : next === "live" ? "LIVE GITHUB ↔ HF PULSE" : "UNIFIED PUBLIC CONSTELLATION";
     document.querySelectorAll("[data-cosmos]").forEach((button) => {
       button.classList.toggle("active", button.dataset.cosmos === next);
     });
@@ -255,6 +292,10 @@
         liveState.className = "live-state cached";
       });
     });
+  });
+  fetchPublicSurface().catch(() => {
+    liveState.textContent = "public metadata temporarily unavailable";
+    liveState.className = "live-state cached";
   });
   resize();
   draw();
