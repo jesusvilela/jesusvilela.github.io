@@ -36,6 +36,7 @@
       <nav class="actions" aria-label="Primary links">
         <a href="https://github.com/Dojo-1" rel="me">GitHub · source/proof</a>
         <a href="https://huggingface.co/jesusvilela" rel="me">Hugging Face · model/data/Space</a>
+        <a href="#science-cycle">Run the science cycle</a>
         <a href="#cosmos">Enter the manifold</a>
       </nav>
       <div class="hero-coordinates" aria-label="Site orientation">
@@ -71,42 +72,129 @@
       </article>
     </section>
 
-    <section class="panel substrates" aria-label="Unified research substrates">
-      <article class="substrate github-plane">
+    <section id="substrates" class="panel plane-bridge" aria-labelledby="bridge-title" data-bridge-mode="loop">
+      <article class="plane-node github-plane">
         <p class="kicker">源 · source / proof plane</p>
-        <h2>GitHub</h2>
+        <h2 id="bridge-title">GitHub</h2>
         <p>Code, theorem footprints, experiments, provenance, correction history, and rebuildable source artifacts.</p>
+        <div class="plane-tags"><span>source</span><span>proof</span><span>tests</span><span>lineage</span></div>
         <a href="https://github.com/Dojo-1">enter source graph ↗</a>
       </article>
-      <div class="bridge-mark" aria-hidden="true"><span>⟷</span><small>ONE LINEAGE</small></div>
-      <article class="substrate hf-plane">
+
+      <div class="bridge-core" aria-label="Bidirectional research transport">
+        <svg class="bridge-svg" viewBox="0 0 160 360" role="img" aria-label="Source and execution planes connected by research transport paths">
+          <defs>
+            <linearGradient id="bridge-ink" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e8dcc2"/>
+              <stop offset=".5" stop-color="#72a8b2"/>
+              <stop offset="1" stop-color="#c77d89"/>
+            </linearGradient>
+          </defs>
+          <path class="bridge-orbit orbit-a" d="M22 40 C146 88 12 145 136 188 S14 292 138 326"/>
+          <path class="bridge-orbit orbit-b" d="M138 40 C14 94 148 148 24 192 S148 287 22 326"/>
+          <path class="bridge-axis" d="M80 28 L80 334"/>
+          <circle class="bridge-particle p1" cx="80" cy="52" r="5"/>
+          <circle class="bridge-particle p2" cx="80" cy="180" r="4"/>
+          <circle class="bridge-particle p3" cx="80" cy="308" r="5"/>
+        </svg>
+        <button id="bridge-mode" class="bridge-control" type="button" aria-label="Change research transport direction">
+          <span>⟷</span><small>closed research loop</small>
+        </button>
+        <div class="bridge-caption" aria-hidden="true"><span>SOURCE</span><span>EXECUTION</span></div>
+      </div>
+
+      <article class="plane-node hf-plane">
         <p class="kicker">実 · model / data / Space plane</p>
         <h2>Hugging Face</h2>
         <p>Public models, datasets, Spaces, and executable research surfaces resolved live from the Hub.</p>
+        <div class="plane-tags"><span>models</span><span>datasets</span><span>Spaces</span><span>runs</span></div>
         <a href="https://huggingface.co/jesusvilela">enter Hub surface ↗</a>
       </article>
     </section>
 
-    <section id="systems" class="grid" aria-labelledby="systems-title">
-      <div class="section-head">
-        <p class="kicker">public gates</p>
-        <h2 id="systems-title">Selected visible systems</h2>
+    <section id="science-cycle" class="panel science-cycle" aria-labelledby="cycle-title">
+      <header class="cycle-head">
+        <div>
+          <p class="kicker">rizz² × science · bounded reflexive cycle</p>
+          <h2 id="cycle-title">Make the claim earn its shape.</h2>
+        </div>
+        <p>One pass to construct. One pass to attack. Style may improve transport; it may not promote evidence.</p>
+      </header>
+
+      <div class="cycle-layout">
+        <div class="cycle-graph-wrap">
+          <svg id="cycle-graph" class="cycle-graph" viewBox="0 0 620 620" role="img" aria-labelledby="cycle-graph-title cycle-graph-desc">
+            <title id="cycle-graph-title">Interactive research evidence cycle</title>
+            <desc id="cycle-graph-desc">Eight selectable stages from question through evidence gate.</desc>
+            <defs>
+              <radialGradient id="cycle-glow"><stop offset="0" stop-color="#72a8b2" stop-opacity=".22"/><stop offset="1" stop-color="#080b12" stop-opacity="0"/></radialGradient>
+              <linearGradient id="cycle-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8dcc2"/><stop offset=".5" stop-color="#72a8b2"/><stop offset="1" stop-color="#c77d89"/></linearGradient>
+            </defs>
+            <circle cx="310" cy="310" r="286" fill="url(#cycle-glow)"/>
+            <circle class="cycle-ring outer" cx="310" cy="310" r="240"/>
+            <circle class="cycle-ring inner" cx="310" cy="310" r="150"/>
+            <path class="cycle-flow" d="M310 70 A240 240 0 1 1 309 70"/>
+
+            <g class="cycle-node active" data-cycle-step="question" role="button" tabindex="0"><circle cx="310" cy="70" r="34"/><text x="310" y="67">問</text><text class="node-label" x="310" y="91">QUESTION</text></g>
+            <g class="cycle-node" data-cycle-step="operationalize" role="button" tabindex="0"><circle cx="480" cy="140" r="34"/><text x="480" y="137">定</text><text class="node-label" x="480" y="161">DEFINE</text></g>
+            <g class="cycle-node" data-cycle-step="baseline" role="button" tabindex="0"><circle cx="550" cy="310" r="34"/><text x="550" y="307">対</text><text class="node-label" x="550" y="331">CONTROL</text></g>
+            <g class="cycle-node" data-cycle-step="instrument" role="button" tabindex="0"><circle cx="480" cy="480" r="34"/><text x="480" y="477">造</text><text class="node-label" x="480" y="501">BUILD</text></g>
+            <g class="cycle-node" data-cycle-step="measure" role="button" tabindex="0"><circle cx="310" cy="550" r="34"/><text x="310" y="547">測</text><text class="node-label" x="310" y="571">MEASURE</text></g>
+            <g class="cycle-node" data-cycle-step="attack" role="button" tabindex="0"><circle cx="140" cy="480" r="34"/><text x="140" y="477">破</text><text class="node-label" x="140" y="501">ATTACK</text></g>
+            <g class="cycle-node" data-cycle-step="replicate" role="button" tabindex="0"><circle cx="70" cy="310" r="34"/><text x="70" y="307">復</text><text class="node-label" x="70" y="331">REPLICATE</text></g>
+            <g class="cycle-node" data-cycle-step="gate" role="button" tabindex="0"><circle cx="140" cy="140" r="34"/><text x="140" y="137">証</text><text class="node-label" x="140" y="161">GATE</text></g>
+
+            <circle id="cycle-spark" class="cycle-spark" cx="310" cy="70" r="8"/>
+            <g class="cycle-core" aria-hidden="true">
+              <text x="310" y="292">A³</text>
+              <text class="core-small" x="310" y="318">ASSUMPTION</text>
+              <text class="core-small" x="310" y="338">ARTIFACT · ATTACK</text>
+            </g>
+          </svg>
+          <div class="cycle-controls">
+            <button id="cycle-run" type="button">run one cycle</button>
+            <button id="cycle-reset" type="button">reset</button>
+          </div>
+        </div>
+
+        <aside id="cycle-detail" class="cycle-detail" aria-live="polite">
+          <div class="cycle-detail-top"><span id="cycle-evidence" class="evidence-pill">H</span><span id="cycle-index">01 / 08</span></div>
+          <h3 id="cycle-step-title">Question</h3>
+          <p id="cycle-step-body">State the phenomenon or claim before the story around it.</p>
+          <dl class="cycle-contract">
+            <div><dt>output</dt><dd id="cycle-output">A claim narrow enough to test.</dd></div>
+            <div><dt>kill condition</dt><dd id="cycle-kill">A result that would make the favored interpretation untenable.</dd></div>
+            <div><dt>remainder</dt><dd id="cycle-remainder">Unknowns remain explicit rather than being filled by narrative.</dd></div>
+          </dl>
+        </aside>
       </div>
-      <article class="card public">
-        <p class="tag">public · verification</p>
-        <h3><a href="https://github.com/Dojo-1/doubt-the-machine">doubt-the-machine</a></h3>
-        <p>AI verification framework and deterministic API for checking claims instead of trusting fluent output.</p>
-      </article>
-      <article class="card public">
-        <p class="tag">public · semantic infrastructure</p>
-        <h3><a href="https://github.com/jesusvilela/aigit">aigit</a></h3>
-        <p>AI-native semantic version control: stable code identity, structural diffs, and repository lineage built on Git.</p>
-      </article>
-      <article class="card public">
-        <p class="tag">public · context systems</p>
-        <h3><a href="https://github.com/jesusvilela/trasgo">trasgo</a></h3>
-        <p>A stealthy context-compilation system for moving meaning through constrained interfaces without flattening its structure.</p>
-      </article>
+
+      <div class="evidence-rail" aria-label="Evidence lattice">
+        <button type="button" data-evidence="P"><strong>P</strong><span>proved</span></button>
+        <button type="button" data-evidence="A"><strong>A</strong><span>axiomatized</span></button>
+        <button type="button" data-evidence="M"><strong>M</strong><span>measured</span></button>
+        <button type="button" data-evidence="H"><strong>H</strong><span>hypothesis</span></button>
+        <button type="button" data-evidence="S"><strong>S</strong><span>semantic</span></button>
+        <button type="button" data-evidence="R"><strong>R</strong><span>retired</span></button>
+        <p id="evidence-note">Select a label to inspect what it licenses — and what it does not.</p>
+      </div>
+    </section>
+
+    <section id="systems" class="mvp-lab" aria-labelledby="systems-title">
+      <div class="section-head mvp-head">
+        <div><p class="kicker">MVP · minimum viable proof</p><h2 id="systems-title">Choose the smallest artifact that can fail.</h2></div>
+        <p>Enter through an observable, not a mythology. Each gate points to a public artifact with a different falsification surface.</p>
+      </div>
+      <div class="mvp-grid">
+        <a class="mvp-card" href="https://github.com/Dojo-1/doubt-the-machine"><span>01 · VERIFY</span><strong>doubt-the-machine</strong><p>Turn an AI-assisted claim into checks, counterclaims, and explicit failure conditions.</p><small>claim → falsifier → verdict</small></a>
+        <a class="mvp-card" href="https://github.com/jesusvilela/connection_laplacian_lean"><span>02 · FORMALIZE</span><strong>connection_laplacian_lean</strong><p>Reduce mathematical ambition to typed statements another checker can rebuild.</p><small>definition → theorem → kernel</small></a>
+        <a class="mvp-card" href="https://github.com/jesusvilela/lambda-sat-solver"><span>03 · STRESS</span><strong>λSAT</strong><p>Separate certified solver behavior from hypotheses about the structure of hardness.</p><small>instance → certificate → scope</small></a>
+        <a class="mvp-card" href="https://github.com/jesusvilela/IGBundle-LLM"><span>04 · MEASURE</span><strong>IGBundle-LLM</strong><p>Ask whether geometric inductive bias survives matched baselines and bounded evaluation.</p><small>operator → baseline → effect</small></a>
+        <a class="mvp-card" href="https://github.com/jesusvilela/trasgo"><span>05 · TRANSPORT</span><strong>Trasgo</strong><p>Move structured context through constrained interfaces while exposing what was lost.</p><small>state → codec → remainder</small></a>
+        <a class="mvp-card" href="https://github.com/jesusvilela/aigit"><span>06 · TRACE</span><strong>AIGit</strong><p>Make semantic lineage reconstructable beside lexical version history.</p><small>identity → diff → provenance</small></a>
+        <a class="mvp-card" href="https://github.com/jesusvilela/NETTRACER"><span>07 · ORCHESTRATE</span><strong>NETTRACER</strong><p>Route and replay heterogeneous AI runtimes with observable control boundaries.</p><small>request → route → replay</small></a>
+        <a class="mvp-card" href="https://huggingface.co/jesusvilela"><span>08 · EXECUTE</span><strong>Hugging Face surface</strong><p>Inspect the public models, datasets, and Spaces that form the execution plane.</p><small>artifact → run → public evidence</small></a>
+      </div>
     </section>
 
     <section id="cosmos" class="cosmos" aria-labelledby="map-title">
@@ -191,5 +279,6 @@
     </section>
   </main>
   <script src="viz.js"></script>
+  <script src="science.js"></script>
 </body>
 </html>
