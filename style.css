@@ -239,6 +239,26 @@ h3 { font-size: 1.35rem; letter-spacing: -.025em; }
 .bridge-control span { color:var(--gold); font-size:1.55rem; }
 .bridge-control small { max-width:70px; color:rgba(248,245,239,.48); font:7px/1.25 ui-monospace,monospace; letter-spacing:.09em; text-transform:uppercase; }
 .bridge-caption { position:absolute; inset:auto 8px 12px; display:flex; justify-content:space-between; color:rgba(248,245,239,.22); font:7px/1 ui-monospace,monospace; letter-spacing:.12em; }
+
+.plane-node { transition: opacity .25s ease, background .25s ease; }
+.plane-bridge[data-bridge-mode="source"] .github-plane {
+  background: radial-gradient(circle at 76% 18%,rgba(114,168,178,.13),transparent 17rem);
+}
+.plane-bridge[data-bridge-mode="source"] .hf-plane { opacity:.56; }
+.plane-bridge[data-bridge-mode="source"] .orbit-a { opacity:.78; animation-direction:normal; }
+.plane-bridge[data-bridge-mode="source"] .orbit-b { opacity:.12; }
+
+.plane-bridge[data-bridge-mode="execution"] .hf-plane {
+  background: radial-gradient(circle at 24% 82%,rgba(199,125,137,.13),transparent 17rem);
+}
+.plane-bridge[data-bridge-mode="execution"] .github-plane { opacity:.56; }
+.plane-bridge[data-bridge-mode="execution"] .orbit-b { opacity:.78; animation-direction:reverse; }
+.plane-bridge[data-bridge-mode="execution"] .orbit-a { opacity:.12; }
+
+.plane-bridge[data-bridge-mode="loop"] .orbit-a,
+.plane-bridge[data-bridge-mode="loop"] .orbit-b { opacity:.46; }
+.plane-bridge[data-bridge-mode="source"] .p1,
+.plane-bridge[data-bridge-mode="execution"] .p3 { r:7px; }
 @keyframes bridgeDash { to { stroke-dashoffset:-90; } }
 @keyframes bridgePulse { 50% { opacity:.28; transform:scale(.72); transform-origin:center; } }
 
