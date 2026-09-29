@@ -1,0 +1,16 @@
+{
+  "task": "Refresh the public research portfolio for the expanded repository surface and improve discovery UX.",
+  "status": "verified",
+  "decisions": [
+    "Replace the manually curated GitHub fetch list with the public profile endpoint.",
+    "Retain the Dojo-1 verification project as a cross-organization public surface.",
+    "Add a filterable, keyboard-accessible research index rather than add unverified repository claims."
+  ],
+  "files_touched": ["index.html", "style.css", "viz.js"],
+  "verification": [
+    "node --check viz.js",
+    "node --check science.js",
+    "git diff --check",
+    "Headless Chromium DOM check confirmed 15 public research systems and the §lang.s1 card."
+  ]
+}

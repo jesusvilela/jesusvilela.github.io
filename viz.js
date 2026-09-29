@@ -13,7 +13,7 @@
     architectural: "#c77d89",
     boundary: "#9b8bc4"
   };
-  const publicRepos = [
+  const fallbackRepos = [
     ["Dojo-1", "doubt-the-machine", "boundary"],
     ["jesusvilela", "aigit", "architectural"],
     ["jesusvilela", "trasgo", "architectural"],
@@ -24,6 +24,7 @@
     ["jesusvilela", "Topos-Trasgo", "architectural"],
     ["jesusvilela", "generational-autoresearch", "analytic"]
   ];
+  const githubAccount = "jesusvilela";
   const hfAccount = "jesusvilela";
   const identityNodes = [
     node(0, null, 0, 0, "origin", "Jesús / research identity", "A public interface joining proof, geometry, systems, and adversarial verification."),
@@ -193,15 +194,41 @@
     return result;
   }
 
+  function classifyRepo(repo) {
+    const text = `${repo.name || ""} ${repo.description || ""} ${(repo.topics || []).join(" ")}`.toLowerCase();
+    if (/§lang|§\|lang|lang\.s1|language specification/.test(text)) return "architectural";
+    if (/lean|proof|sat|theorem|formal|laplacian|certificate/.test(text)) return "algebraic";
+    if (/bundle|geometry|geometric|hyperbolic|manifold|topos/.test(text)) return "analytic";
+    if (/doubt|verify|verification|falsif|audit|trace|observer/.test(text)) return "boundary";
+    return "architectural";
+  }
+
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[character]));
+  }
+
+  function renderResearchIndex(repos, filter = "all") {
+    const list = document.querySelector("#research-index-list");
+    const status = document.querySelector("#research-index-status");
+    if (!list || !status) return;
+    const visible = repos.filter((repo) => filter === "all" || repo.type === filter);
+    status.textContent = `${visible.length} ${filter === "all" ? "public research systems" : `${filter} systems`} shown · ordered by source update`;
+    list.innerHTML = visible.map((repo) => `<a class="research-item" href="${escapeHtml(repo.url)}"><span class="research-item-meta"><span>${escapeHtml(repo.type)}</span><span>${escapeHtml(repo.language || "source")}</span></span><strong>${escapeHtml(repo.name)}</strong><p>${escapeHtml(repo.description || "Public source artifact. Scope and evidence live with the repository.")}</p><small>open source artifact ↗</small></a>`).join("") || "<p>Nothing in this research lane is public yet.</p>";
+  }
+
   async function fetchGitHubRepos() {
-    const responses = await Promise.all(publicRepos.map(([owner, repo, type]) =>
-      fetch(`https://api.github.com/repos/${owner}/${repo}`, { headers: { Accept: "application/vnd.github+json" } }).then(async (response) => ({ response, type }))
-    ));
-    if (!responses.every(({ response }) => response.ok)) throw new Error("GitHub public metadata unavailable");
-    const repos = await Promise.all(responses.map(async ({ response, type }) => {
-      const repo = await response.json();
-      return { name: repo.name, description: repo.description, language: repo.language, url: repo.html_url, updated: repo.updated_at, type };
-    }));
+    const response = await fetch(`https://api.github.com/users/${githubAccount}/repos?type=owner&sort=updated&per_page=100`, { headers: { Accept: "application/vnd.github+json" } });
+    if (!response.ok) throw new Error("GitHub public metadata unavailable");
+    const payload = await response.json();
+    if (!Array.isArray(payload)) throw new Error("GitHub public metadata malformed");
+    const repos = payload
+      .filter((repo) => !repo.fork && !repo.archived)
+      .map((repo) => ({ name: repo.name, description: repo.description, language: repo.language, url: repo.html_url, updated: repo.updated_at, topics: repo.topics || [], type: classifyRepo(repo) }));
+    const dojoResponse = await fetch("https://api.github.com/repos/Dojo-1/doubt-the-machine", { headers: { Accept: "application/vnd.github+json" } });
+    if (dojoResponse.ok) {
+      const dojoRepo = await dojoResponse.json();
+      if (!repos.some((repo) => repo.url === dojoRepo.html_url)) repos.unshift({ name: dojoRepo.name, description: dojoRepo.description, language: dojoRepo.language, url: dojoRepo.html_url, updated: dojoRepo.updated_at, topics: dojoRepo.topics || [], type: "boundary" });
+    }
     const count = document.querySelector("#repo-count");
     if (count) count.textContent = String(repos.length).padStart(2, "0");
     return repos;
@@ -244,6 +271,7 @@
     liveState.className = "live-state cached";
     const [github, huggingface] = await Promise.all([fetchGitHubRepos(), fetchHuggingFace()]);
     publicCache = { github, huggingface };
+    renderResearchIndex(github);
     const pulse = document.querySelector("#pulse-date");
     if (pulse) pulse.textContent = `refreshed ${new Date().toLocaleTimeString()}`;
     return publicCache;
@@ -293,9 +321,22 @@
       });
     });
   });
+  document.querySelectorAll("[data-research-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.researchFilter;
+      document.querySelectorAll("[data-research-filter]").forEach((candidate) => {
+        const active = candidate === button;
+        candidate.classList.toggle("active", active);
+        candidate.setAttribute("aria-pressed", String(active));
+      });
+      if (publicCache) renderResearchIndex(publicCache.github, filter);
+    });
+  });
   fetchPublicSurface().catch(() => {
     liveState.textContent = "public metadata temporarily unavailable";
     liveState.className = "live-state cached";
+    const status = document.querySelector("#research-index-status");
+    if (status) status.textContent = "Public metadata is temporarily unavailable. Open the full source graph directly.";
   });
   resize();
   draw();

@@ -55,7 +55,7 @@
 
     <section class="observatory" aria-label="Public research observatory">
       <article>
-        <span class="metric" id="repo-count">09</span>
+        <span class="metric" id="repo-count">—</span>
         <p>GitHub systems<br /><small>source · proof · lineage</small></p>
       </article>
       <article>
@@ -70,6 +70,26 @@
         <span class="metric pulse">●</span>
         <p>living archive<br /><small id="pulse-date">resolving public surfaces</small></p>
       </article>
+    </section>
+
+    <section id="research-index" class="research-index panel" aria-labelledby="research-index-title">
+      <header class="research-index-head">
+        <div>
+          <p class="kicker">public research index · live GitHub surface</p>
+          <h2 id="research-index-title">Find the work by question, not by lore.</h2>
+        </div>
+        <p>New public repositories appear here from the source profile. The map remains an orientation; this index is the current directory.</p>
+      </header>
+      <div class="research-filters" role="group" aria-label="Filter public research repositories">
+        <button class="active" type="button" data-research-filter="all" aria-pressed="true">all systems</button>
+        <button type="button" data-research-filter="analytic" aria-pressed="false">geometry</button>
+        <button type="button" data-research-filter="algebraic" aria-pressed="false">proof</button>
+        <button type="button" data-research-filter="architectural" aria-pressed="false">systems</button>
+        <button type="button" data-research-filter="boundary" aria-pressed="false">verification</button>
+      </div>
+      <p id="research-index-status" class="research-index-status" aria-live="polite">Resolving the current public source graph…</p>
+      <div id="research-index-list" class="research-index-list" aria-live="polite"></div>
+      <a class="research-index-link" href="https://github.com/jesusvilela?tab=repositories">open the full source graph ↗</a>
     </section>
 
     <section id="substrates" class="panel plane-bridge" aria-labelledby="bridge-title" data-bridge-mode="loop">
@@ -194,6 +214,7 @@
         <a class="mvp-card" href="https://github.com/jesusvilela/aigit"><span>06 · TRACE</span><strong>AIGit</strong><p>Make semantic lineage reconstructable beside lexical version history.</p><small>identity → diff → provenance</small></a>
         <a class="mvp-card" href="https://github.com/jesusvilela/NETTRACER"><span>07 · ORCHESTRATE</span><strong>NETTRACER</strong><p>Route and replay heterogeneous AI runtimes with observable control boundaries.</p><small>request → route → replay</small></a>
         <a class="mvp-card" href="https://huggingface.co/jesusvilela"><span>08 · EXECUTE</span><strong>Hugging Face surface</strong><p>Inspect the public models, datasets, and Spaces that form the execution plane.</p><small>artifact → run → public evidence</small></a>
+        <a class="mvp-card language-card" href="https://github.com/jesusvilela/-lang.s1"><span>09 · SPECIFY</span><strong>§lang.s1</strong><p>Inspect the public language specification where geometric operators, axioms, and scope live together instead of being implied by aesthetic vocabulary.</p><small>syntax → operator → explicit boundary</small></a>
       </div>
     </section>
 
