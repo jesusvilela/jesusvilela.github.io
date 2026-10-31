@@ -12,32 +12,28 @@
   <meta property="og:url" content="https://jesusvilela.github.io/" />
   <meta name="theme-color" content="#080b12" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23e8dcc2' stroke-width='8' stroke-linecap='round' stroke-dasharray='125 30'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=editorial-4" />
+  <link rel="stylesheet" href="editorial.css?v=editorial-4" />
 </head>
 <body>
   <main class="page-shell">
+    <a class="skip-link" href="#now">Skip to research</a>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker">静けさ · adversarial clarity · geometric systems</p>
-        <p class="identity-line">JESÚS VILELA × DOJO-1</p>
+        <p class="identity-line">JESÚS VILELA <span aria-hidden="true">/</span> DOJO-1</p>
+        <p class="kicker">Mathematics · Geometric AI · Formal systems</p>
         <h1 id="hero-title">What remains true when the representation changes?</h1>
-        <p class="lead">I investigate that question across mathematics, geometric AI, formal verification and computational systems. The ideas may travel between representations; the evidence, assumptions and unresolved remainder must travel with them.</p>
-        <p class="hero-byline">Independent researcher · engineering leader · human-directed, AI-assisted research</p>
-        <nav class="actions" aria-label="Primary links">
-          <a href="#now">Current research</a>
-          <a href="#research-index">Browse public work</a>
+        <p class="lead">Across mathematics, geometric AI and computation, I follow what survives a change of representation—along with its assumptions, corrections and unanswered questions.</p>
+        <nav class="actions" aria-label="Begin exploring">
+          <a class="action-primary" href="#now">Explore the research <span aria-hidden="true">↗</span></a>
+          <a href="#research-index">Research directory</a>
           <a href="https://github.com/Dojo-1" rel="me">Dojo-1 on GitHub</a>
-          <a href="#cosmos">Explore the manifold</a>
         </nav>
-        <div class="hero-coordinates" aria-label="Site orientation">
-          <span>QUESTIONS ↔ REPRESENTATIONS</span>
-          <span>HUMAN DIRECTION ↔ AI ASSISTANCE ↔ EVIDENCE</span>
-        </div>
+        <p class="hero-byline">Independent research · human-directed, AI-assisted</p>
       </div>
-
       <figure class="hero-figure" id="hero-figure" aria-labelledby="hero-figure-caption">
         <div class="hero-manifold-stage">
-          <canvas id="hero-manifold" role="img" tabindex="-1" aria-label="Interactive 3D conceptual manifold with seven orbiting nodes, nested shells, a luminous centre, and braided ribbons. Drag or use arrow keys to rotate.">An artistic projection of nested shells and intersecting geometric paths.</canvas>
+          <canvas id="hero-manifold" role="img" tabindex="-1" aria-label="Interactive 3D geometric sculpture, inspired by UniverseOS. Drag or use arrow keys to rotate.">An artistic projection of nested shells and intersecting geometric paths.</canvas>
           <svg class="hero-figure-fallback" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
             <defs>
               <radialGradient id="hero-core-glow"><stop offset="0" stop-color="#fff2da" stop-opacity=".9"/><stop offset=".15" stop-color="#c9d5c5" stop-opacity=".4"/><stop offset="1" stop-color="#6a8d92" stop-opacity="0"/></radialGradient>
@@ -55,89 +51,69 @@
             <g fill="#e8dcc2" opacity=".85"><circle cx="75" cy="135" r="3"/><circle cx="318" cy="155" r="3"/><circle cx="200" cy="62" r="2"/><circle cx="301" cy="281" r="3"/><circle cx="102" cy="286" r="2"/></g>
           </svg>
         </div>
-        <figcaption id="hero-figure-caption">
-          <span>UNIVERSE / LOCAL PROJECTION</span>
-          <span>Conceptual geometry · not a proof</span>
-        </figcaption>
+        <figcaption id="hero-figure-caption">UniverseOS-inspired · artistic projection</figcaption>
         <button id="hero-motion-toggle" class="hero-motion-toggle" type="button" aria-pressed="false" hidden>Pause motion</button>
       </figure>
     </section>
 
-    <section class="panel mantra" aria-label="Research mantra">
-      <span>small kernels</span>
-      <span>explicit falsifiers</span>
-      <span>matched nulls</span>
-      <span>rebuildable evidence</span>
-    </section>
-
-
     <section id="now" class="current-work" aria-labelledby="now-title">
       <header class="current-work-head">
         <div>
-          <p class="kicker">October 2026 · selected public investigations</p>
+          <p class="kicker">Selected investigations / October 2026</p>
           <h2 id="now-title">Questions still in motion.</h2>
         </div>
-        <p>Open questions, machine-checked statements, computational experiments and corrections. Each investigation has a source and a boundary: what the evidence establishes, and what remains to be examined.</p>
+        <p>Three ways into the ongoing work. Formal proofs, experimental findings and open hypotheses are kept distinct; the underlying repositories carry the fuller evidence and limitations.</p>
       </header>
-      <div class="work-grid">
-        <a class="work-card" href="https://github.com/Dojo-1/tenth-discriminant">
-          <span class="work-meta"><span>01 · number theory</span><span>Lean statement · review open</span></span>
-          <h3>Can arithmetic and geometry constrain the same integer?</h3>
-          <p><strong>The Tenth Discriminant.</strong> A checked Lean endpoint gives a strict 47-billion bound on the actual discriminant of imaginary quadratic class-number-one fields. Independent semantic review remains open; this is not a Siegel-zero theorem.</p>
-          <small>Inspect the theorem and reconstruction ↗</small>
+      <div class="featured-research" aria-label="Featured research">
+        <a class="feature-entry" href="https://github.com/Dojo-1/tenth-discriminant">
+          <span class="feature-number">01</span>
+          <div class="feature-body">
+            <p class="feature-meta">Number theory <span aria-hidden="true">·</span> Lean statement / review open</p>
+            <h3>The Tenth Discriminant</h3>
+            <p>Can arithmetic and geometry constrain the same integer? A checked bound below 47 billion, with independent semantic review still open.</p>
+          </div>
+          <span class="feature-arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="work-card" href="https://github.com/jesusvilela/connection_laplacian_lean">
-          <span class="work-meta"><span>02 · geometric graph theory</span><span>Lean proofs · scoped statements</span></span>
-          <h3>What does a twisted connection preserve?</h3>
-          <p><strong>Connection Laplacian.</strong> A machine-checked development for finite graphs, including balanced-component kernel dimensions and exact spectral identities. Generalization beyond the formalized hypotheses remains a separate obligation.</p>
-          <small>Read the checked spine ↗</small>
+        <a class="feature-entry" href="https://github.com/jesusvilela/connection_laplacian_lean">
+          <span class="feature-number">02</span>
+          <div class="feature-body">
+            <p class="feature-meta">Geometric graph theory <span aria-hidden="true">·</span> Lean checked</p>
+            <h3>Connection Laplacian</h3>
+            <p>What does a twisted connection preserve? Formal kernel and spectral results for finite graphs, with explicit hypotheses.</p>
+          </div>
+          <span class="feature-arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="work-card" href="https://github.com/Dojo-1/cryptid-verifier">
-          <span class="work-meta"><span>03 · computability</span><span>Lean reductions · open halting questions</span></span>
-          <h3>Where does a formal reduction stop short of an answer?</h3>
-          <p><strong>Cryptid verifier.</strong> Exact Lean criteria for selected Turing machines, bounded comparisons and L17 reachability results. The corresponding non-halting questions have not been solved.</p>
-          <small>Trace the proof boundary ↗</small>
-        </a>
-        <a class="work-card" href="https://github.com/jesusvilela/IGBundle-LLM">
-          <span class="work-meta"><span>04 · geometric AI</span><span>Experimental · corrected evidence</span></span>
-          <h3>When, if ever, does geometry help a language model?</h3>
-          <p><strong>IGBundle-LLM.</strong> Fiber-structured adapter experiments, recorded controls and published corrections. The current evidence does not establish a general performance benefit, learned hyperbolicity or efficiency gain.</p>
-          <small>Inspect experiments and correction notice ↗</small>
-        </a>
-        <a class="work-card" href="https://github.com/Dojo-1/ESMF-0-Mathematical-Genesis">
-          <span class="work-meta"><span>05 · mathematical cognition</span><span>Controlled experiments · hypotheses</span></span>
-          <h3>Can distinctions emerge without preassigned labels?</h3>
-          <p><strong>ESMF-0 / Mathematical Genesis.</strong> Adaptive topology, local predictive relations and heterogeneous geometric transports under experimental controls. Semantic emergence has not been demonstrated.</p>
-          <small>Inspect the controls and open questions ↗</small>
-        </a>
-        <a class="work-card" href="https://github.com/Dojo-1/A-Synopsis-of-Results-in-Pure-Applied-and-Computational-Mathematics">
-          <span class="work-meta"><span>06 · mathematical atlas</span><span>Editorial research · audit limits</span></span>
-          <h3>Can a mathematical atlas carry its uncertainty across representations?</h3>
-          <p><strong>A Synopsis of Results.</strong> Five volumes and 5,000 classified records—not 5,000 newly proved theorems. Public editions are readable, but the source registry and verification pipeline are not distributed in this snapshot.</p>
-          <small>Read the editions and availability boundary ↗</small>
+        <a class="feature-entry" href="https://github.com/jesusvilela/IGBundle-LLM">
+          <span class="feature-number">03</span>
+          <div class="feature-body">
+            <p class="feature-meta">Geometric AI <span aria-hidden="true">·</span> Experimental / corrected evidence</p>
+            <h3>IGBundle-LLM</h3>
+            <p>When, if ever, does geometry help a language model? Controlled experiments and published corrections; no general advantage established.</p>
+          </div>
+          <span class="feature-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
-      <p class="work-footnote">Evidence is local to each claim and repository. A conceptual map is not itself a proof, a benchmark or an external peer review.</p>
+      <a class="more-research" href="#research-index">Browse all nine selected investigations <span aria-hidden="true">↗</span></a>
     </section>
 
-    <section id="research-index" class="research-index panel" aria-labelledby="research-index-title">
+    <section id="research-index" class="research-index" aria-labelledby="research-index-title">
       <header class="research-index-head">
         <div>
-          <p class="kicker">research bibliography · editorially curated</p>
-          <h2 id="research-index-title">Follow the questions and the evidence.</h2>
+          <p class="kicker">Research directory</p>
+          <h2 id="research-index-title">An open atlas.</h2>
         </div>
-        <p>Selection requires a substantive research question, inspectable methods or formal artifacts, and an honest account of what remains open. Experimental, semantic and editorial work may appear, but none is silently promoted to proof or external peer review. New repositories do not enter this index automatically.</p>
+        <p>Selected formal developments, experimental systems and research languages. Each entry is linked to its public source; new repositories are not added automatically.</p>
       </header>
-      <div class="research-filters" role="group" aria-label="Filter public research repositories">
-        <button class="active" type="button" data-research-filter="all" aria-pressed="true">all curated</button>
-        <button type="button" data-research-filter="analytic" aria-pressed="false">geometry</button>
-        <button type="button" data-research-filter="algebraic" aria-pressed="false">proof</button>
-        <button type="button" data-research-filter="architectural" aria-pressed="false">languages / atlas</button>
-        <button type="button" data-research-filter="boundary" aria-pressed="false">verification</button>
+      <div class="research-filters" role="group" aria-label="Filter research directory">
+        <button class="active" type="button" data-research-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-research-filter="algebraic" aria-pressed="false">Mathematics</button>
+        <button type="button" data-research-filter="analytic" aria-pressed="false">Geometric AI</button>
+        <button type="button" data-research-filter="architectural" aria-pressed="false">Languages &amp; atlas</button>
+        <button type="button" data-research-filter="boundary" aria-pressed="false">Verification</button>
       </div>
-      <p id="research-index-status" class="research-index-status" aria-live="polite">Checking curated research sources…</p>
+      <p id="research-index-status" class="research-index-status" aria-live="polite">Checking research sources…</p>
       <div id="research-index-list" class="research-index-list" aria-live="polite"></div>
-      <p class="work-footnote">This is a selected portfolio, not a claim that every available repository is original research or authored alone.</p>
+      <p class="work-footnote">Evidence belongs to individual statements, methods and experiments. A conceptual map does not itself supply proof or peer review.</p>
     </section>
 
     <section id="substrates" class="panel plane-bridge" aria-labelledby="bridge-title" data-bridge-mode="loop">
@@ -313,6 +289,6 @@
   </main>
   <script src="viz.js"></script>
   <script src="science.js"></script>
-  <script type="module" src="hero-universe.js"></script>
+  <script type="module" src="hero-universe.js?v=editorial-4"></script>
 </body>
 </html>

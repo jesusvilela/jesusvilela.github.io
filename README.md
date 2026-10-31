@@ -46,6 +46,14 @@ The homepage no longer uses the oversized enso/kanji insignia. Instead, its hero
 
 The \`hero-universe.js\` enhancement uses pinned Three.js \`0.160.1\` from jsDelivr. It loads only when the hero approaches the viewport. Rendering has a capped device-pixel ratio, pauses when the page is hidden or the figure is offscreen, and respects \`prefers-reduced-motion\`. Visitors can drag or use arrow keys to rotate; the small motion control offers pause and resume. If the CDN, WebGL or graphics context fails, an inline SVG remains visible and the research content stays available. The source has no build-step requirement. Actual WebGL display requires a browser with network access to the pinned CDN.
 
+## Editorial website layout (October 2026)
+
+The original large logo and later oversized 3D hero crowded the research, while six dense summaries followed by another boxed index repeated the same information. The current homepage uses one clear reading order: a succinct research question, three source-linked investigations, and a filterable nine-project directory. The UniverseOS-inspired live 3D figure remains a small desktop companion and is omitted on narrow screens, where it would otherwise displace the content.
+
+The page retains a stylesheet for the extended scientific visualizations and adds `editorial.css` as a deliberately separated, low-chrome UI layer. It avoids nested hero and research cards, uses reading-size text with generous spacing and accessible focus states, and keeps the research facts in the source repositories. Dynamic directory filtering remains usable without the hero's WebGL scene. The new page links version its styles to help avoid previously cached presentation code.
+
+The editorial layout was checked in a local, dependency-free, representative HTML/CSS browser prototype at desktop (1440 px), tablet (820 px) and mobile (390 px) widths, with no horizontal overflow. **That prototype is not a captured screenshot of the deployed production page**; production WebGL and full stylesheet behavior should still be inspected before merging.
+
 ## The curated research map
 
 The [public research projection](https://jesusvilela.github.io/#map-title) is an interactive orientation through a manually selected bibliography of public work from `jesusvilela` and `Dojo-1`. It is a **conceptual visualization**, not a mathematically validated hyperbolic embedding or a directory of every public repository. One selected Hugging Face model accompanies its source investigation, not an independent claim of model performance.
@@ -64,7 +72,7 @@ Authorship and credit must be checked per repository. The programme is human-dir
 
 ## October 2026 public entry points
 
-The homepage foregrounds six source-linked investigations, with three further language and computation studies in the curated index. The distinction between formal proof, measurement, hypothesis and editorial work remains visible:
+The homepage now foregrounds three concise paths—Tenth Discriminant, Connection Laplacian and IGBundle-LLM—then offers the full nine-project research directory. The six other selected investigations are still present in that directory. The distinction between formal proof, measurement, hypothesis and editorial work remains visible:
 
 - [Tenth Discriminant](https://github.com/Dojo-1/tenth-discriminant): Lean-checked strict actual-field discriminant bound below 47 billion, with independent human semantic review open.
 - [Connection Laplacian](https://github.com/jesusvilela/connection_laplacian_lean): checked finite-graph kernel and spectral statements, not blanket assertions about every geometric setting.
