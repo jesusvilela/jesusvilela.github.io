@@ -58,12 +58,16 @@ Authorship and credit must be checked per repository. The programme is human-dir
 
 ## October 2026 public entry points
 
-The homepage now foregrounds selected, source-linked investigations rather than making visitors reverse-engineer an extensive constellation:
+The homepage foregrounds six source-linked investigations, with three further language and computation studies in the curated index. The distinction between formal proof, measurement, hypothesis and editorial work remains visible:
 
 - [Tenth Discriminant](https://github.com/Dojo-1/tenth-discriminant): Lean-checked strict actual-field discriminant bound below 47 billion, with independent human semantic review open.
-- [A Synopsis of Results](https://github.com/Dojo-1/A-Synopsis-of-Results-in-Pure-Applied-and-Computational-Mathematics): five-volume editorial atlas with 5,000 records; the distributed snapshot is not the complete reproducible registry.
+- [Connection Laplacian](https://github.com/jesusvilela/connection_laplacian_lean): checked finite-graph kernel and spectral statements, not blanket assertions about every geometric setting.
 - [Cryptid verifier](https://github.com/Dojo-1/cryptid-verifier): exact formal criteria and bounded reachability, not solved non-halting problems.
+- [IGBundle-LLM](https://github.com/jesusvilela/IGBundle-LLM): geometric-adapter experiments with corrections, controls and no established general superiority.
 - [ESMF-0](https://github.com/Dojo-1/ESMF-0-Mathematical-Genesis): controlled experimental geometric-cognitive substrate, not demonstrated semantic emergence.
+- [A Synopsis of Results](https://github.com/Dojo-1/A-Synopsis-of-Results-in-Pure-Applied-and-Computational-Mathematics): five-volume editorial atlas with 5,000 records; the distributed snapshot is not the complete reproducible registry.
+
+The curated index also includes [λSAT](https://github.com/jesusvilela/lambda-sat-solver), [§-LANG S1](https://github.com/jesusvilela/-lang.s1), and [Trasgo §1](https://github.com/jesusvilela/trasgo), each with its own formal, measured or semantic evidence limits.
 
 **Research stance.** The author provides questions, conceptual architecture, prioritization and direction; AI systems assist in derivation, formalization, implementation and verification. These roles are not independent peer review. Claims must be read at the scale of their actual theorem, measurement, hypothesis or semantic object.
 
