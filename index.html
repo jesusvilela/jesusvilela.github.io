@@ -17,39 +17,50 @@
 <body>
   <main class="page-shell">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-kanji" aria-hidden="true">
-        <strong>間</strong>
-        <span>MA · THE ACTIVE VOID</span>
+      <div class="hero-copy">
+        <p class="kicker">静けさ · adversarial clarity · geometric systems</p>
+        <p class="identity-line">JESÚS VILELA × DOJO-1</p>
+        <h1 id="hero-title">What remains true when the representation changes?</h1>
+        <p class="lead">I investigate that question across mathematics, geometric AI, formal verification and computational systems. The ideas may travel between representations; the evidence, assumptions and unresolved remainder must travel with them.</p>
+        <p class="hero-byline">Independent researcher · engineering leader · human-directed, AI-assisted research</p>
+        <nav class="actions" aria-label="Primary links">
+          <a href="#now">Current research</a>
+          <a href="#research-index">Browse public work</a>
+          <a href="https://github.com/Dojo-1" rel="me">Dojo-1 on GitHub</a>
+          <a href="#cosmos">Explore the manifold</a>
+        </nav>
+        <div class="hero-coordinates" aria-label="Site orientation">
+          <span>QUESTIONS ↔ REPRESENTATIONS</span>
+          <span>HUMAN DIRECTION ↔ AI ASSISTANCE ↔ EVIDENCE</span>
+        </div>
       </div>
-      <div class="enso" aria-hidden="true">
-        <svg viewBox="0 0 240 240" role="img">
-          <defs>
-            <linearGradient id="ink" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stop-color="#e8dcc2" />
-              <stop offset="0.45" stop-color="#6a8d92" />
-              <stop offset="1" stop-color="#b76e79" />
-            </linearGradient>
-          </defs>
-          <path d="M184 55c-35-31-95-26-128 9-35 38-30 101 11 129 39 27 97 19 121-20 25-40 5-91-39-107" fill="none" stroke="url(#ink)" stroke-width="18" stroke-linecap="round" />
-          <path d="M159 190c-21 14-52 15-76 1" fill="none" stroke="#f8f5ef" stroke-opacity=".22" stroke-width="6" stroke-linecap="round" />
-        </svg>
-      </div>
-      <p class="kicker">静けさ · adversarial clarity · geometric systems</p>
-      <p class="identity-line">JESÚS VILELA × DOJO-1</p>
-      <h1 id="hero-title">What remains true when the representation changes?</h1>
-      <p class="lead">I investigate that question across mathematics, geometric AI, formal verification and computational systems. The ideas may travel between representations; the evidence, assumptions and unresolved remainder must travel with them.</p>
-      <p class="hero-byline">Independent researcher · engineering leader · human-directed, AI-assisted research</p>
-      <nav class="actions" aria-label="Primary links">
-        <a href="#now">Current research</a>
-        <a href="#research-index">Browse public work</a>
-        <a href="https://github.com/Dojo-1" rel="me">Dojo-1 on GitHub</a>
-        <a href="#cosmos">Explore the manifold</a>
-      </nav>
-      <div class="hero-coordinates" aria-label="Site orientation">
-        <span>JESÚS VILELA × DOJO-1</span>
-        <span>QUESTIONS ↔ REPRESENTATIONS</span>
-        <span>HUMAN DIRECTION ↔ AI ASSISTANCE ↔ EVIDENCE</span>
-      </div>
+
+      <figure class="hero-figure" id="hero-figure" aria-labelledby="hero-figure-caption">
+        <div class="hero-manifold-stage">
+          <canvas id="hero-manifold" role="img" tabindex="0" aria-label="Interactive 3D conceptual manifold with seven orbiting nodes, nested shells, a luminous centre, and braided ribbons. Drag or use arrow keys to rotate.">An artistic projection of nested shells and intersecting geometric paths.</canvas>
+          <svg class="hero-figure-fallback" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="hero-core-glow"><stop offset="0" stop-color="#fff2da" stop-opacity=".9"/><stop offset=".15" stop-color="#c9d5c5" stop-opacity=".4"/><stop offset="1" stop-color="#6a8d92" stop-opacity="0"/></radialGradient>
+              <linearGradient id="hero-orbit-ink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8dcc2"/><stop offset=".52" stop-color="#72a8b2"/><stop offset="1" stop-color="#b76e79"/></linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="143" fill="url(#hero-core-glow)" opacity=".55"/>
+            <g fill="none" stroke="url(#hero-orbit-ink)" stroke-width="1.3">
+              <ellipse cx="200" cy="200" rx="148" ry="76" transform="rotate(-34 200 200)" opacity=".72"/>
+              <ellipse cx="200" cy="200" rx="148" ry="76" transform="rotate(40 200 200)" opacity=".7"/>
+              <ellipse cx="200" cy="200" rx="136" ry="136" transform="rotate(-20 200 200)" opacity=".27"/>
+              <ellipse cx="200" cy="200" rx="112" ry="145" transform="rotate(52 200 200)" opacity=".22"/>
+              <path d="M90 200 C136 72 264 72 310 200 S264 328 200 200 S136 72 90 200" opacity=".48"/>
+            </g>
+            <circle cx="200" cy="200" r="10" fill="#f8f5ef" opacity=".85"/>
+            <g fill="#e8dcc2" opacity=".85"><circle cx="75" cy="135" r="3"/><circle cx="318" cy="155" r="3"/><circle cx="200" cy="62" r="2"/><circle cx="301" cy="281" r="3"/><circle cx="102" cy="286" r="2"/></g>
+          </svg>
+        </div>
+        <figcaption id="hero-figure-caption">
+          <span>UNIVERSE / LOCAL PROJECTION</span>
+          <span>Conceptual geometry · not a proof</span>
+        </figcaption>
+        <button id="hero-motion-toggle" class="hero-motion-toggle" type="button" aria-pressed="false" hidden>Pause motion</button>
+      </figure>
     </section>
 
     <section class="panel mantra" aria-label="Research mantra">
@@ -321,5 +332,6 @@
   </main>
   <script src="viz.js"></script>
   <script src="science.js"></script>
+  <script type="module" src="hero-universe.js"></script>
 </body>
 </html>
