@@ -574,7 +574,7 @@ h3 { font-size: 1.35rem; letter-spacing: -.025em; }
 .hero-copy { position: relative; min-width: 0; z-index: 1; }
 .hero h1 {
   max-width: 16ch;
-  font-size: clamp(2.55rem, 5.4vw, 5.2rem);
+  font-size: clamp(2.5rem, 4.3vw, 4.15rem);
   letter-spacing: -.064em;
   line-height: 1.02;
 }
