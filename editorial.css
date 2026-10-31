@@ -7,20 +7,20 @@ body { -webkit-font-smoothing: antialiased; }
 .skip-link:focus { top: 14px; }
 
 /* The central question leads. The 3D sculpture is a small, optional companion. */
-.hero { display: grid; grid-template-columns: minmax(0,1fr) 182px; align-items: center; gap: clamp(32px,5vw,78px); min-height: 0; margin: 0; padding: clamp(46px,5.8vw,84px) 0 clamp(54px,6vw,80px); border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; box-shadow: none; overflow: visible; }
+.hero { display: grid; grid-template-columns: minmax(0,1fr) 182px; align-items: center; gap: clamp(32px,5vw,78px); min-height: 0; margin: 0; padding: clamp(35px,4vw,58px) 0 clamp(36px,4.6vw,64px); border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; box-shadow: none; overflow: visible; }
 .hero::after { display: none; }
 .hero-copy { min-width: 0; position: relative; z-index: 1; }
 .hero .identity-line { margin: 0 0 18px; color: var(--gold); font: 650 .82rem/1.45 ui-monospace,monospace; letter-spacing: .13em; }
 .hero .identity-line span { padding: 0 .35em; color: var(--water); }
 .hero .kicker { margin: 0 0 10px; color: var(--muted); font: 500 .78rem/1.5 ui-monospace,monospace; letter-spacing: .1em; }
-.hero h1 { max-width: 18ch; font-size: clamp(2.85rem,5.15vw,5.2rem); line-height: 1.065; letter-spacing: -.059em; text-wrap: balance; }
-.hero .lead { max-width: 61ch; margin: 24px 0 0; color: var(--muted); font-size: clamp(1.05rem,1.53vw,1.2rem); line-height: 1.65; }
-.hero .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px; }
+.hero h1 { max-width: 22ch; font-size: clamp(2.75rem,4.5vw,4.5rem); line-height: 1.085; letter-spacing: -.059em; text-wrap: balance; }
+.hero .lead { max-width: 61ch; margin: 19px 0 0; color: var(--muted); font-size: clamp(1.05rem,1.53vw,1.18rem); line-height: 1.65; }
+.hero .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 22px; margin-top: 21px; }
 .hero .actions a { display: inline-flex; align-items: center; min-height: 43px; padding: 8px 0; border: 0; border-radius: 0; background: none; color: var(--muted); font-size: .93rem; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(232,220,194,.28); text-underline-offset: .33em; transition: color .2s ease, background .2s ease; }
 .hero .actions a:hover, .hero .actions a:focus-visible { transform: none; border: 0; background: none; color: var(--paper); }
 .hero .actions a.action-primary { padding: 10px 18px; color: var(--ink); background: var(--gold); border-radius: 999px; text-decoration: none; }
 .hero .actions a.action-primary:hover, .hero .actions a.action-primary:focus-visible { color: var(--ink); background: var(--paper); }
-.hero-byline { margin: 17px 0 0; color: rgba(248,245,239,.56); font: 500 .78rem/1.58 ui-monospace,monospace; }
+.hero-byline { margin: 14px 0 0; color: rgba(248,245,239,.56); font: 500 .78rem/1.58 ui-monospace,monospace; }
 .hero-figure { position: relative; width: 100%; max-width: 182px; margin: 0; justify-self: end; isolation: isolate; }
 .hero-manifold-stage { position: relative; width: 100%; min-height: 0; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle,rgba(114,168,178,.11),transparent 67%); }
 #hero-manifold, .hero-figure-fallback { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
@@ -78,7 +78,7 @@ body { -webkit-font-smoothing: antialiased; }
 }
 @media (max-width: 720px) {
   .page-shell { width: calc(100% - 36px); padding-top: 0; }
-  .hero { display: block; min-height: 0; padding: 48px 0 42px; }
+  .hero { display: block; min-height: 0; padding: 38px 0 36px; }
   .hero-figure { display: none; }
   .hero .identity-line { margin-bottom: 15px; }
   .hero h1 { max-width: 22ch; font-size: clamp(2.65rem,8vw,3.7rem); }
