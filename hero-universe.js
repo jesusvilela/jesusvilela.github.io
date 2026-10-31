@@ -333,6 +333,7 @@
       camera.lookAt(0, 0, 0);
       buildSculpture(THREE);
       ready = true;
+      canvas.tabIndex = 0;
       resize();
       renderStill();
       host.classList.add("is-live");
@@ -348,6 +349,7 @@
       ready = false;
       host.classList.remove("is-live");
       toggle.hidden = true;
+      canvas.tabIndex = -1;
       try { if (renderer) renderer.dispose(); } catch { /* graceful fallback */ }
     }
   }
@@ -423,11 +425,13 @@
     lost = true;
     stop();
     host.classList.remove("is-live");
+    canvas.tabIndex = -1;
     updateButton();
   });
   canvas.addEventListener("webglcontextrestored", () => {
     lost = false;
     host.classList.add("is-live");
+    canvas.tabIndex = 0;
     resize();
     sync();
   });
