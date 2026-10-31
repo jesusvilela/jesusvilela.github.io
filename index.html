@@ -100,11 +100,11 @@
     <section class="observatory" aria-label="Public research observatory">
       <article>
         <span class="metric" id="repo-count">—</span>
-        <p>recent public repositories<br /><small>personal + Dojo-1 sources</small></p>
+        <p>curated research<br /><small>source-linked studies · explicit limits</small></p>
       </article>
       <article>
         <span class="metric" id="hf-count">—</span>
-        <p>Hub artifacts<br /><small>models · datasets · Spaces</small></p>
+        <p>selected model artifacts<br /><small>not independent research results</small></p>
       </article>
       <article>
         <span class="metric">04</span>
@@ -119,22 +119,21 @@
     <section id="research-index" class="research-index panel" aria-labelledby="research-index-title">
       <header class="research-index-head">
         <div>
-          <p class="kicker">public research index · live GitHub surface</p>
-          <h2 id="research-index-title">Find the work by question, not by lore.</h2>
+          <p class="kicker">research bibliography · editorially curated</p>
+          <h2 id="research-index-title">A selective research atlas, not a GitHub feed.</h2>
         </div>
-        <p>Recent public repositories from my personal account and Dojo-1. The live classification is approximate; the selected work above supplies context, evidence boundaries and a place to begin.</p>
+        <p>Selection requires a substantive research question, inspectable methods or formal artifacts, and an honest account of what remains open. Experimental, semantic and editorial work may appear, but none is silently promoted to proof or external peer review. New repositories do not enter this index automatically.</p>
       </header>
       <div class="research-filters" role="group" aria-label="Filter public research repositories">
-        <button class="active" type="button" data-research-filter="all" aria-pressed="true">all systems</button>
+        <button class="active" type="button" data-research-filter="all" aria-pressed="true">all curated</button>
         <button type="button" data-research-filter="analytic" aria-pressed="false">geometry</button>
         <button type="button" data-research-filter="algebraic" aria-pressed="false">proof</button>
-        <button type="button" data-research-filter="architectural" aria-pressed="false">systems</button>
+        <button type="button" data-research-filter="architectural" aria-pressed="false">languages / atlas</button>
         <button type="button" data-research-filter="boundary" aria-pressed="false">verification</button>
       </div>
-      <p id="research-index-status" class="research-index-status" aria-live="polite">Resolving the current public source graph…</p>
+      <p id="research-index-status" class="research-index-status" aria-live="polite">Checking curated research sources…</p>
       <div id="research-index-list" class="research-index-list" aria-live="polite"></div>
-      <a class="research-index-link" href="https://github.com/jesusvilela?tab=repositories">personal repositories ↗</a>
-      <a class="research-index-link" href="https://github.com/orgs/Dojo-1/repositories">Dojo-1 public repositories ↗</a>
+      <p class="work-footnote">This is a selected portfolio, not a claim that every available repository is original research or authored alone.</p>
     </section>
 
     <section id="substrates" class="panel plane-bridge" aria-labelledby="bridge-title" data-bridge-mode="loop">
@@ -171,16 +170,16 @@
       <article class="plane-node hf-plane">
         <p class="kicker">実 · model / data / Space plane</p>
         <h2>Hugging Face</h2>
-        <p>Public models, datasets, Spaces, and executable research surfaces resolved live from the Hub.</p>
+        <p>Selected public execution artifacts accompany the corresponding source investigations. Model release and execution do not, by themselves, validate a research claim.</p>
         <div class="plane-tags"><span>models</span><span>datasets</span><span>Spaces</span><span>runs</span></div>
-        <a href="https://huggingface.co/jesusvilela">enter Hub surface ↗</a>
+        <a href="https://huggingface.co/jesusvilela/manifoldgl">inspect IGBundle model artifact ↗</a>
       </article>
     </section>
 
     <section id="science-cycle" class="panel science-cycle" aria-labelledby="cycle-title">
       <header class="cycle-head">
         <div>
-          <p class="kicker">rizz² × science · bounded reflexive cycle</p>
+          <p class="kicker">research method · bounded reflexive cycle</p>
           <h2 id="cycle-title">Make the claim earn its shape.</h2>
         </div>
         <p>One pass to construct. One pass to attack. Style may improve transport; it may not promote evidence.</p>
@@ -245,44 +244,25 @@
       </div>
     </section>
 
-    <section id="systems" class="mvp-lab" aria-labelledby="systems-title">
-      <div class="section-head mvp-head">
-        <div><p class="kicker">MVP · minimum viable proof</p><h2 id="systems-title">Choose the smallest artifact that can fail.</h2></div>
-        <p>Enter through an observable, not a mythology. Each gate points to a public artifact with a different falsification surface.</p>
-      </div>
-      <div class="mvp-grid">
-        <a class="mvp-card" href="https://github.com/Dojo-1/doubt-the-machine"><span>01 · VERIFY</span><strong>doubt-the-machine</strong><p>Turn an AI-assisted claim into checks, counterclaims, and explicit failure conditions.</p><small>claim → falsifier → verdict</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/connection_laplacian_lean"><span>02 · FORMALIZE</span><strong>connection_laplacian_lean</strong><p>Reduce mathematical ambition to typed statements another checker can rebuild.</p><small>definition → theorem → kernel</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/lambda-sat-solver"><span>03 · STRESS</span><strong>λSAT</strong><p>Separate certified solver behavior from hypotheses about the structure of hardness.</p><small>instance → certificate → scope</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/IGBundle-LLM"><span>04 · MEASURE</span><strong>IGBundle-LLM</strong><p>Ask whether geometric inductive bias survives matched baselines and bounded evaluation.</p><small>operator → baseline → effect</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/trasgo"><span>05 · TRANSPORT</span><strong>Trasgo</strong><p>Move structured context through constrained interfaces while exposing what was lost.</p><small>state → codec → remainder</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/aigit"><span>06 · TRACE</span><strong>AIGit</strong><p>Make semantic lineage reconstructable beside lexical version history.</p><small>identity → diff → provenance</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/NETTRACER"><span>07 · ORCHESTRATE</span><strong>NETTRACER</strong><p>Route and replay heterogeneous AI runtimes with observable control boundaries.</p><small>request → route → replay</small></a>
-        <a class="mvp-card" href="https://huggingface.co/jesusvilela"><span>08 · EXECUTE</span><strong>Hugging Face surface</strong><p>Inspect the public models, datasets, and Spaces that form the execution plane.</p><small>artifact → run → public evidence</small></a>
-        <a class="mvp-card language-card" href="https://github.com/jesusvilela/-lang.s1"><span>09 · SPECIFY</span><strong>§lang.s1</strong><p>Inspect the public language specification where geometric operators, axioms, and scope live together instead of being implied by aesthetic vocabulary.</p><small>syntax → operator → explicit boundary</small></a>
-      </div>
-    </section>
-
     <section id="cosmos" class="cosmos" aria-labelledby="map-title">
       <header class="cosmos-head">
         <div>
-          <p class="kicker">hypercomplex research manifold · live projection</p>
+          <p class="kicker">conceptual research manifold · curated projection</p>
           <h2 id="map-title">One identity. Many coordinate systems.</h2>
         </div>
-        <p>Move through one public research constellation projected across
-          GitHub source/proof lineage and Hugging Face model/data/Space artifacts.</p>
+        <p>Move between selected, inspectable research artifacts and one associated model release. The projection is a navigational metaphor, not a claimed mathematical embedding.</p>
       </header>
       <div class="cosmos-switch" role="group" aria-label="Visualization dataset">
         <button class="active" type="button" data-cosmos="identity">identity manifold</button>
-        <button type="button" data-cosmos="public">unified constellation</button>
-        <button type="button" data-cosmos="live">live GitHub ↔ HF pulse</button>
+        <button type="button" data-cosmos="public">curated studies</button>
+        <button type="button" data-cosmos="live">verify public sources</button>
       </div>
       <div class="cosmos-stage">
         <canvas id="research-cosmos" aria-label="Interactive hyperbolic research tree"></canvas>
         <div class="cosmos-chrome" aria-hidden="true">
           <span>∞ / JESÚS × DOJO-1</span>
-          <span id="projection-label">CONCEPTUAL RESEARCH PROJECTION</span>
-          <span>2026 · OPEN SYSTEM</span>
+          <span id="projection-label">CONCEPTUAL PROJECTION</span>
+          <span>2026 · EVIDENCE BOUND</span>
         </div>
         <aside id="node-detail" class="node-detail" aria-live="polite">
           <span class="node-index">00 · ORIGIN</span>
@@ -325,24 +305,6 @@
       </div>
     </section>
 
-    <section class="grid safety" aria-labelledby="safety-title">
-      <div class="section-head">
-        <p class="kicker">available constellations</p>
-        <h2 id="safety-title">Public work, beautifully connected</h2>
-      </div>
-      <article class="card">
-        <h3><a href="https://github.com/jesusvilela/connection_laplacian_lean">connection_laplacian_lean</a></h3>
-        <p>Lean formalization of kernel-dimension theory for the Z/2 connection Laplacian on finite simple graphs.</p>
-      </article>
-      <article class="card">
-        <h3><a href="https://github.com/jesusvilela/NETTRACER">NETTRACER</a></h3>
-        <p>Local-first orchestration for routing, observing, replaying, and auditing multiple AI runtimes.</p>
-      </article>
-      <article class="card">
-        <h3><a href="https://github.com/jesusvilela/IGBundle-LLM">IGBundle-LLM</a></h3>
-        <p>Information-geometric and sheaf/bundle-inspired adaptation experiments for language models.</p>
-      </article>
-    </section>
     <footer class="site-footer"><p>Found a counterexample, a broken link, or an assumption worth questioning? The correction is part of the work.</p><a href="https://github.com/jesusvilela/jesusvilela.github.io/issues">Open a site issue ↗</a><a href="https://github.com/jesusvilela">Find me on GitHub ↗</a></footer>
   </main>
   <script src="viz.js"></script>
