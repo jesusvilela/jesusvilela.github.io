@@ -4,46 +4,63 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>Jesús Vilela × Dojo-1 · research systems you can rebuild</title>
-  <meta name="description" content="Jesús Vilela × Dojo-1: one public research surface spanning GitHub source/proof lineage and Hugging Face model, dataset, and Space execution artifacts." />
+  <title>Jesús Vilela · Mathematics, geometric AI &amp; research systems</title>
+  <meta name="description" content="Jesús Vilela: independent research at the intersection of mathematics, geometric AI, formal verification and computational systems. Explore current questions, public evidence and open problems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jesús Vilela · Questions across mathematics and AI" />
+  <meta property="og:description" content="What remains true when the representation changes? Public proofs, experiments and open questions from Jesús Vilela and Dojo-1." />
+  <meta property="og:url" content="https://jesusvilela.github.io/" />
+  <meta name="theme-color" content="#080b12" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23e8dcc2' stroke-width='8' stroke-linecap='round' stroke-dasharray='125 30'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="page-shell">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-kanji" aria-hidden="true">
-        <strong>間</strong>
-        <span>MA · THE ACTIVE VOID</span>
+      <div class="hero-copy">
+        <p class="kicker">静けさ · adversarial clarity · geometric systems</p>
+        <p class="identity-line">JESÚS VILELA × DOJO-1</p>
+        <h1 id="hero-title">What remains true when the representation changes?</h1>
+        <p class="lead">I investigate that question across mathematics, geometric AI, formal verification and computational systems. The ideas may travel between representations; the evidence, assumptions and unresolved remainder must travel with them.</p>
+        <p class="hero-byline">Independent researcher · engineering leader · human-directed, AI-assisted research</p>
+        <nav class="actions" aria-label="Primary links">
+          <a href="#now">Current research</a>
+          <a href="#research-index">Browse public work</a>
+          <a href="https://github.com/Dojo-1" rel="me">Dojo-1 on GitHub</a>
+          <a href="#cosmos">Explore the manifold</a>
+        </nav>
+        <div class="hero-coordinates" aria-label="Site orientation">
+          <span>QUESTIONS ↔ REPRESENTATIONS</span>
+          <span>HUMAN DIRECTION ↔ AI ASSISTANCE ↔ EVIDENCE</span>
+        </div>
       </div>
-      <div class="enso" aria-hidden="true">
-        <svg viewBox="0 0 240 240" role="img">
-          <defs>
-            <linearGradient id="ink" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stop-color="#e8dcc2" />
-              <stop offset="0.45" stop-color="#6a8d92" />
-              <stop offset="1" stop-color="#b76e79" />
-            </linearGradient>
-          </defs>
-          <path d="M184 55c-35-31-95-26-128 9-35 38-30 101 11 129 39 27 97 19 121-20 25-40 5-91-39-107" fill="none" stroke="url(#ink)" stroke-width="18" stroke-linecap="round" />
-          <path d="M159 190c-21 14-52 15-76 1" fill="none" stroke="#f8f5ef" stroke-opacity=".22" stroke-width="6" stroke-linecap="round" />
-        </svg>
-      </div>
-      <p class="kicker">静けさ · adversarial clarity · geometric systems</p>
-      <p class="identity-line">JESÚS VILELA × DOJO-1</p>
-      <h1 id="hero-title">Research systems that survive contact with evidence.</h1>
-      <p class="lead">Formal mathematics, geometric AI, adversarial verification, and semantic infrastructure — source/proof lineage on GitHub, model/data/Space execution on Hugging Face.</p>
-      <nav class="actions" aria-label="Primary links">
-        <a href="https://github.com/Dojo-1" rel="me">GitHub · source/proof</a>
-        <a href="https://huggingface.co/jesusvilela" rel="me">Hugging Face · model/data/Space</a>
-        <a href="#science-cycle">Run the science cycle</a>
-        <a href="#cosmos">Enter the manifold</a>
-      </nav>
-      <div class="hero-coordinates" aria-label="Site orientation">
-        <span>JESÚS VILELA × DOJO-1</span>
-        <span>GITHUB ↔ HUGGING FACE</span>
-        <span>HUMAN ↔ MACHINE ↔ PROOF</span>
-      </div>
+
+      <figure class="hero-figure" id="hero-figure" aria-labelledby="hero-figure-caption">
+        <div class="hero-manifold-stage">
+          <canvas id="hero-manifold" role="img" tabindex="-1" aria-label="Interactive 3D conceptual manifold with seven orbiting nodes, nested shells, a luminous centre, and braided ribbons. Drag or use arrow keys to rotate.">An artistic projection of nested shells and intersecting geometric paths.</canvas>
+          <svg class="hero-figure-fallback" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="hero-core-glow"><stop offset="0" stop-color="#fff2da" stop-opacity=".9"/><stop offset=".15" stop-color="#c9d5c5" stop-opacity=".4"/><stop offset="1" stop-color="#6a8d92" stop-opacity="0"/></radialGradient>
+              <linearGradient id="hero-orbit-ink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8dcc2"/><stop offset=".52" stop-color="#72a8b2"/><stop offset="1" stop-color="#b76e79"/></linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="143" fill="url(#hero-core-glow)" opacity=".55"/>
+            <g fill="none" stroke="url(#hero-orbit-ink)" stroke-width="1.3">
+              <ellipse cx="200" cy="200" rx="148" ry="76" transform="rotate(-34 200 200)" opacity=".72"/>
+              <ellipse cx="200" cy="200" rx="148" ry="76" transform="rotate(40 200 200)" opacity=".7"/>
+              <ellipse cx="200" cy="200" rx="136" ry="136" transform="rotate(-20 200 200)" opacity=".27"/>
+              <ellipse cx="200" cy="200" rx="112" ry="145" transform="rotate(52 200 200)" opacity=".22"/>
+              <path d="M90 200 C136 72 264 72 310 200 S264 328 200 200 S136 72 90 200" opacity=".48"/>
+            </g>
+            <circle cx="200" cy="200" r="10" fill="#f8f5ef" opacity=".85"/>
+            <g fill="#e8dcc2" opacity=".85"><circle cx="75" cy="135" r="3"/><circle cx="318" cy="155" r="3"/><circle cx="200" cy="62" r="2"/><circle cx="301" cy="281" r="3"/><circle cx="102" cy="286" r="2"/></g>
+          </svg>
+        </div>
+        <figcaption id="hero-figure-caption">
+          <span>UNIVERSE / LOCAL PROJECTION</span>
+          <span>Conceptual geometry · not a proof</span>
+        </figcaption>
+        <button id="hero-motion-toggle" class="hero-motion-toggle" type="button" aria-pressed="false" hidden>Pause motion</button>
+      </figure>
     </section>
 
     <section class="panel mantra" aria-label="Research mantra">
@@ -53,14 +70,64 @@
       <span>rebuildable evidence</span>
     </section>
 
+
+    <section id="now" class="panel current-work" aria-labelledby="now-title">
+      <header class="current-work-head">
+        <div>
+          <p class="kicker">October 2026 · selected public investigations</p>
+          <h2 id="now-title">Questions still in motion.</h2>
+        </div>
+        <p>I work through conjectures, proof obligations, computational experiments and corrections. These are entry points, not a list of finished discoveries. A machine-checked theorem establishes its precise formal statement; external mathematical scrutiny remains a separate obligation.</p>
+      </header>
+      <div class="work-grid">
+        <a class="work-card" href="https://github.com/Dojo-1/tenth-discriminant">
+          <span class="work-meta"><span>01 · number theory</span><span>Lean statement · review open</span></span>
+          <h3>Can arithmetic and geometry constrain the same integer?</h3>
+          <p><strong>The Tenth Discriminant.</strong> A checked Lean endpoint gives a strict 47-billion bound on the actual discriminant of imaginary quadratic class-number-one fields. Independent semantic review remains open; this is not a Siegel-zero theorem.</p>
+          <small>Inspect the theorem and reconstruction ↗</small>
+        </a>
+        <a class="work-card" href="https://github.com/jesusvilela/connection_laplacian_lean">
+          <span class="work-meta"><span>02 · geometric graph theory</span><span>Lean proofs · scoped statements</span></span>
+          <h3>What does a twisted connection preserve?</h3>
+          <p><strong>Connection Laplacian.</strong> A machine-checked development for finite graphs, including balanced-component kernel dimensions and exact spectral identities. Generalization beyond the formalized hypotheses remains a separate obligation.</p>
+          <small>Read the checked spine ↗</small>
+        </a>
+        <a class="work-card" href="https://github.com/Dojo-1/cryptid-verifier">
+          <span class="work-meta"><span>03 · computability</span><span>Lean reductions · open halting questions</span></span>
+          <h3>Where does a formal reduction stop short of an answer?</h3>
+          <p><strong>Cryptid verifier.</strong> Exact Lean criteria for selected Turing machines, bounded comparisons and L17 reachability results. The corresponding non-halting questions have not been solved.</p>
+          <small>Trace the proof boundary ↗</small>
+        </a>
+        <a class="work-card" href="https://github.com/jesusvilela/IGBundle-LLM">
+          <span class="work-meta"><span>04 · geometric AI</span><span>Experimental · corrected evidence</span></span>
+          <h3>When, if ever, does geometry help a language model?</h3>
+          <p><strong>IGBundle-LLM.</strong> Fiber-structured adapter experiments, recorded controls and published corrections. The current evidence does not establish a general performance benefit, learned hyperbolicity or efficiency gain.</p>
+          <small>Inspect experiments and correction notice ↗</small>
+        </a>
+        <a class="work-card" href="https://github.com/Dojo-1/ESMF-0-Mathematical-Genesis">
+          <span class="work-meta"><span>05 · mathematical cognition</span><span>Controlled experiments · hypotheses</span></span>
+          <h3>Can distinctions emerge without preassigned labels?</h3>
+          <p><strong>ESMF-0 / Mathematical Genesis.</strong> Adaptive topology, local predictive relations and heterogeneous geometric transports under experimental controls. Semantic emergence has not been demonstrated.</p>
+          <small>Inspect the controls and open questions ↗</small>
+        </a>
+        <a class="work-card" href="https://github.com/Dojo-1/A-Synopsis-of-Results-in-Pure-Applied-and-Computational-Mathematics">
+          <span class="work-meta"><span>06 · mathematical atlas</span><span>Editorial research · audit limits</span></span>
+          <h3>Can a mathematical atlas carry its uncertainty across representations?</h3>
+          <p><strong>A Synopsis of Results.</strong> Five volumes and 5,000 classified records—not 5,000 newly proved theorems. Public editions are readable, but the source registry and verification pipeline are not distributed in this snapshot.</p>
+          <small>Read the editions and availability boundary ↗</small>
+        </a>
+      </div>
+      <p class="work-footnote">Evidence is local to each claim and repository. A conceptual map is not itself a proof, a benchmark or an external peer review.</p>
+    </section>
+
     <section class="observatory" aria-label="Public research observatory">
       <article>
         <span class="metric" id="repo-count">—</span>
-        <p>GitHub systems<br /><small>source · proof · lineage</small></p>
+        <p>curated research<br /><small>source-linked studies · explicit limits</small></p>
       </article>
       <article>
         <span class="metric" id="hf-count">—</span>
-        <p>Hub artifacts<br /><small>models · datasets · Spaces</small></p>
+        <p>selected model artifacts<br /><small>not independent research results</small></p>
       </article>
       <article>
         <span class="metric">04</span>
@@ -75,21 +142,21 @@
     <section id="research-index" class="research-index panel" aria-labelledby="research-index-title">
       <header class="research-index-head">
         <div>
-          <p class="kicker">public research index · live GitHub surface</p>
-          <h2 id="research-index-title">Find the work by question, not by lore.</h2>
+          <p class="kicker">research bibliography · editorially curated</p>
+          <h2 id="research-index-title">Follow the questions and the evidence.</h2>
         </div>
-        <p>New public repositories appear here from the source profile. The map remains an orientation; this index is the current directory.</p>
+        <p>Selection requires a substantive research question, inspectable methods or formal artifacts, and an honest account of what remains open. Experimental, semantic and editorial work may appear, but none is silently promoted to proof or external peer review. New repositories do not enter this index automatically.</p>
       </header>
       <div class="research-filters" role="group" aria-label="Filter public research repositories">
-        <button class="active" type="button" data-research-filter="all" aria-pressed="true">all systems</button>
+        <button class="active" type="button" data-research-filter="all" aria-pressed="true">all curated</button>
         <button type="button" data-research-filter="analytic" aria-pressed="false">geometry</button>
         <button type="button" data-research-filter="algebraic" aria-pressed="false">proof</button>
-        <button type="button" data-research-filter="architectural" aria-pressed="false">systems</button>
+        <button type="button" data-research-filter="architectural" aria-pressed="false">languages / atlas</button>
         <button type="button" data-research-filter="boundary" aria-pressed="false">verification</button>
       </div>
-      <p id="research-index-status" class="research-index-status" aria-live="polite">Resolving the current public source graph…</p>
+      <p id="research-index-status" class="research-index-status" aria-live="polite">Checking curated research sources…</p>
       <div id="research-index-list" class="research-index-list" aria-live="polite"></div>
-      <a class="research-index-link" href="https://github.com/jesusvilela?tab=repositories">open the full source graph ↗</a>
+      <p class="work-footnote">This is a selected portfolio, not a claim that every available repository is original research or authored alone.</p>
     </section>
 
     <section id="substrates" class="panel plane-bridge" aria-labelledby="bridge-title" data-bridge-mode="loop">
@@ -126,16 +193,16 @@
       <article class="plane-node hf-plane">
         <p class="kicker">実 · model / data / Space plane</p>
         <h2>Hugging Face</h2>
-        <p>Public models, datasets, Spaces, and executable research surfaces resolved live from the Hub.</p>
+        <p>Selected public execution artifacts accompany the corresponding source investigations. Model release and execution do not, by themselves, validate a research claim.</p>
         <div class="plane-tags"><span>models</span><span>datasets</span><span>Spaces</span><span>runs</span></div>
-        <a href="https://huggingface.co/jesusvilela">enter Hub surface ↗</a>
+        <a href="https://huggingface.co/jesusvilela/manifoldgl">inspect IGBundle model artifact ↗</a>
       </article>
     </section>
 
     <section id="science-cycle" class="panel science-cycle" aria-labelledby="cycle-title">
       <header class="cycle-head">
         <div>
-          <p class="kicker">rizz² × science · bounded reflexive cycle</p>
+          <p class="kicker">research method · bounded reflexive cycle</p>
           <h2 id="cycle-title">Make the claim earn its shape.</h2>
         </div>
         <p>One pass to construct. One pass to attack. Style may improve transport; it may not promote evidence.</p>
@@ -200,44 +267,25 @@
       </div>
     </section>
 
-    <section id="systems" class="mvp-lab" aria-labelledby="systems-title">
-      <div class="section-head mvp-head">
-        <div><p class="kicker">MVP · minimum viable proof</p><h2 id="systems-title">Choose the smallest artifact that can fail.</h2></div>
-        <p>Enter through an observable, not a mythology. Each gate points to a public artifact with a different falsification surface.</p>
-      </div>
-      <div class="mvp-grid">
-        <a class="mvp-card" href="https://github.com/Dojo-1/doubt-the-machine"><span>01 · VERIFY</span><strong>doubt-the-machine</strong><p>Turn an AI-assisted claim into checks, counterclaims, and explicit failure conditions.</p><small>claim → falsifier → verdict</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/connection_laplacian_lean"><span>02 · FORMALIZE</span><strong>connection_laplacian_lean</strong><p>Reduce mathematical ambition to typed statements another checker can rebuild.</p><small>definition → theorem → kernel</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/lambda-sat-solver"><span>03 · STRESS</span><strong>λSAT</strong><p>Separate certified solver behavior from hypotheses about the structure of hardness.</p><small>instance → certificate → scope</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/IGBundle-LLM"><span>04 · MEASURE</span><strong>IGBundle-LLM</strong><p>Ask whether geometric inductive bias survives matched baselines and bounded evaluation.</p><small>operator → baseline → effect</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/trasgo"><span>05 · TRANSPORT</span><strong>Trasgo</strong><p>Move structured context through constrained interfaces while exposing what was lost.</p><small>state → codec → remainder</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/aigit"><span>06 · TRACE</span><strong>AIGit</strong><p>Make semantic lineage reconstructable beside lexical version history.</p><small>identity → diff → provenance</small></a>
-        <a class="mvp-card" href="https://github.com/jesusvilela/NETTRACER"><span>07 · ORCHESTRATE</span><strong>NETTRACER</strong><p>Route and replay heterogeneous AI runtimes with observable control boundaries.</p><small>request → route → replay</small></a>
-        <a class="mvp-card" href="https://huggingface.co/jesusvilela"><span>08 · EXECUTE</span><strong>Hugging Face surface</strong><p>Inspect the public models, datasets, and Spaces that form the execution plane.</p><small>artifact → run → public evidence</small></a>
-        <a class="mvp-card language-card" href="https://github.com/jesusvilela/-lang.s1"><span>09 · SPECIFY</span><strong>§lang.s1</strong><p>Inspect the public language specification where geometric operators, axioms, and scope live together instead of being implied by aesthetic vocabulary.</p><small>syntax → operator → explicit boundary</small></a>
-      </div>
-    </section>
-
     <section id="cosmos" class="cosmos" aria-labelledby="map-title">
       <header class="cosmos-head">
         <div>
-          <p class="kicker">hypercomplex research manifold · live projection</p>
+          <p class="kicker">conceptual research manifold · curated projection</p>
           <h2 id="map-title">One identity. Many coordinate systems.</h2>
         </div>
-        <p>Move through one public research constellation projected across
-          GitHub source/proof lineage and Hugging Face model/data/Space artifacts.</p>
+        <p>Move between selected, inspectable research artifacts and one associated model release. The projection is a navigational metaphor, not a claimed mathematical embedding.</p>
       </header>
       <div class="cosmos-switch" role="group" aria-label="Visualization dataset">
         <button class="active" type="button" data-cosmos="identity">identity manifold</button>
-        <button type="button" data-cosmos="public">unified constellation</button>
-        <button type="button" data-cosmos="live">live GitHub ↔ HF pulse</button>
+        <button type="button" data-cosmos="public">curated studies</button>
+        <button type="button" data-cosmos="live">verify public sources</button>
       </div>
       <div class="cosmos-stage">
         <canvas id="research-cosmos" aria-label="Interactive hyperbolic research tree"></canvas>
         <div class="cosmos-chrome" aria-hidden="true">
           <span>∞ / JESÚS × DOJO-1</span>
-          <span id="projection-label">POINCARÉ PROJECTION</span>
-          <span>2026 · OPEN SYSTEM</span>
+          <span id="projection-label">CONCEPTUAL PROJECTION</span>
+          <span>2026 · EVIDENCE BOUND</span>
         </div>
         <aside id="node-detail" class="node-detail" aria-live="polite">
           <span class="node-index">00 · ORIGIN</span>
@@ -280,26 +328,10 @@
       </div>
     </section>
 
-    <section class="grid safety" aria-labelledby="safety-title">
-      <div class="section-head">
-        <p class="kicker">available constellations</p>
-        <h2 id="safety-title">Public work, beautifully connected</h2>
-      </div>
-      <article class="card">
-        <h3><a href="https://github.com/jesusvilela/connection_laplacian_lean">connection_laplacian_lean</a></h3>
-        <p>Lean formalization of kernel-dimension theory for the Z/2 connection Laplacian on finite simple graphs.</p>
-      </article>
-      <article class="card">
-        <h3><a href="https://github.com/jesusvilela/NETTRACER">NETTRACER</a></h3>
-        <p>Local-first orchestration for routing, observing, replaying, and auditing multiple AI runtimes.</p>
-      </article>
-      <article class="card">
-        <h3><a href="https://github.com/jesusvilela/IGBundle-LLM">IGBundle-LLM</a></h3>
-        <p>Information-geometric and sheaf/bundle-inspired adaptation experiments for language models.</p>
-      </article>
-    </section>
+    <footer class="site-footer"><p>Found a counterexample, a broken link, or an assumption worth questioning? The correction is part of the work.</p><a href="https://github.com/jesusvilela/jesusvilela.github.io/issues">Open a site issue ↗</a><a href="https://github.com/jesusvilela">Find me on GitHub ↗</a></footer>
   </main>
   <script src="viz.js"></script>
   <script src="science.js"></script>
+  <script type="module" src="hero-universe.js"></script>
 </body>
 </html>
