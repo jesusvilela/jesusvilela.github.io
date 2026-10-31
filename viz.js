@@ -158,8 +158,9 @@
     if (!nodes[index]) return;
     selected = index;
     const item = nodes[index];
-    const action = item.url ? `<a href="${item.url}">open public artifact ↗</a>` : "hover · touch a node";
-    detail.innerHTML = `<span class="node-index">${String(item.id).padStart(2, "0")} · ${item.type}</span><h3>${item.title}</h3><p>${item.text}</p><small>${action}</small>`;
+    const url = /^https:\/\/github\.com\/|^https:\/\/huggingface\.co\//.test(item.url || "") ? item.url : "";
+    const action = url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">open public artifact ↗</a>` : "hover · touch a node";
+    detail.innerHTML = `<span class="node-index">${String(item.id).padStart(2, "0")} · ${escapeHtml(item.type)}</span><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p><small>${action}</small>`;
   }
 
   function buildUnifiedNodes(githubRepos, hfArtifacts) {
@@ -212,25 +213,57 @@
     const status = document.querySelector("#research-index-status");
     if (!list || !status) return;
     const visible = repos.filter((repo) => filter === "all" || repo.type === filter);
-    status.textContent = `${visible.length} ${filter === "all" ? "public research systems" : `${filter} systems`} shown · ordered by source update`;
+    status.textContent = `${visible.length} ${filter === "all" ? "recent public repositories" : `${filter} repositories`} shown · ordered by source update${status.dataset.partial ? " · one GitHub source unavailable" : ""}`;
     list.innerHTML = visible.map((repo) => `<a class="research-item" href="${escapeHtml(repo.url)}"><span class="research-item-meta"><span>${escapeHtml(repo.type)}</span><span>${escapeHtml(repo.language || "source")}</span></span><strong>${escapeHtml(repo.name)}</strong><p>${escapeHtml(repo.description || "Public source artifact. Scope and evidence live with the repository.")}</p><small>open source artifact ↗</small></a>`).join("") || "<p>Nothing in this research lane is public yet.</p>";
   }
 
-  async function fetchGitHubRepos() {
-    const response = await fetch(`https://api.github.com/users/${githubAccount}/repos?type=owner&sort=updated&per_page=100`, { headers: { Accept: "application/vnd.github+json" } });
-    if (!response.ok) throw new Error("GitHub public metadata unavailable");
-    const payload = await response.json();
-    if (!Array.isArray(payload)) throw new Error("GitHub public metadata malformed");
-    const repos = payload
-      .filter((repo) => !repo.fork && !repo.archived)
-      .map((repo) => ({ name: repo.name, description: repo.description, language: repo.language, url: repo.html_url, updated: repo.updated_at, topics: repo.topics || [], type: classifyRepo(repo) }));
-    const dojoResponse = await fetch("https://api.github.com/repos/Dojo-1/doubt-the-machine", { headers: { Accept: "application/vnd.github+json" } });
-    if (dojoResponse.ok) {
-      const dojoRepo = await dojoResponse.json();
-      if (!repos.some((repo) => repo.url === dojoRepo.html_url)) repos.unshift({ name: dojoRepo.name, description: dojoRepo.description, language: dojoRepo.language, url: dojoRepo.html_url, updated: dojoRepo.updated_at, topics: dojoRepo.topics || [], type: "boundary" });
+  async function listPublicRepos(owner, kind) {
+    const found = [];
+    // GitHub REST pages contain at most 100 entries; avoid silently dropping newer work.
+    for (let page = 1; page <= 5; page++) {
+      const endpoint = kind === "org" ? "orgs" : "users";
+      const response = await fetch(`https://api.github.com/${endpoint}/${owner}/repos?sort=updated&per_page=100&page=${page}`, {
+        headers: { Accept: "application/vnd.github+json" }
+      });
+      if (!response.ok) throw new Error(`Public GitHub metadata unavailable: ${owner}`);
+      const payload = await response.json();
+      if (!Array.isArray(payload)) throw new Error("GitHub public metadata malformed");
+      found.push(...payload.filter((repo) => !repo.fork && !repo.archived && !repo.private && repo.visibility !== "internal"));
+      if (payload.length < 100) break;
     }
+    return found;
+  }
+
+  async function fetchGitHubRepos() {
+    const sources = await Promise.allSettled([
+      listPublicRepos(githubAccount, "user"),
+      listPublicRepos("Dojo-1", "org")
+    ]);
+    const successful = sources.filter((result) => result.status === "fulfilled");
+    if (!successful.length) throw new Error("Both public GitHub metadata sources are unavailable");
+    const unique = new Map();
+    successful.flatMap((entry) => entry.value).forEach((repo) => {
+      const url = repo.html_url;
+      if (!url || unique.has(url)) return;
+      unique.set(url, {
+        name: repo.name,
+        description: repo.description,
+        language: repo.language,
+        url,
+        updated: repo.updated_at || repo.pushed_at,
+        topics: repo.topics || [],
+        type: classifyRepo(repo)
+      });
+    });
+    const repos = [...unique.values()].sort((a, b) => new Date(b.updated || 0) - new Date(a.updated || 0));
     const count = document.querySelector("#repo-count");
     if (count) count.textContent = String(repos.length).padStart(2, "0");
+    const status = document.querySelector("#research-index-status");
+    if (status && successful.length < sources.length) {
+      status.dataset.partial = "true";
+    } else if (status) {
+      delete status.dataset.partial;
+    }
     return repos;
   }
 
