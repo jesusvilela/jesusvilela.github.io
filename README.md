@@ -40,6 +40,12 @@ orientation:
 - **voice** — translate difficult work into public, inspectable artifacts;
 - **boundary** — publish deliberate, inspectable artifacts.
 
+## UniverseOS-inspired geometric portrait
+
+The homepage no longer uses the oversized enso/kanji insignia. Instead, its hero includes a deliberately restrained **live 3D WebGL sculpture** adapted as an original browser-side visual from the owner's UniverseOS design vocabulary: nested harmonic shells, seven angled orbital carriers, woven local ribbons, seven points with Fano incidence lines, and a softly pulsing nucleus. This is an **artistic, conceptual projection**—not an embedding theorem, a physiological model, or a claim about machine cognition. No files or private research content from the UniverseOS repository are published or imported.
+
+The \`hero-universe.js\` enhancement uses pinned Three.js \`0.160.1\` from jsDelivr. It loads only when the hero approaches the viewport. Rendering has a capped device-pixel ratio, pauses when the page is hidden or the figure is offscreen, and respects \`prefers-reduced-motion\`. Visitors can drag or use arrow keys to rotate; the small motion control offers pause and resume. If the CDN, WebGL or graphics context fails, an inline SVG remains visible and the research content stays available. The source has no build-step requirement. Actual WebGL display requires a browser with network access to the pinned CDN.
+
 ## The curated research map
 
 The [public research projection](https://jesusvilela.github.io/#map-title) is an interactive orientation through a manually selected bibliography of public work from `jesusvilela` and `Dojo-1`. It is a **conceptual visualization**, not a mathematically validated hyperbolic embedding or a directory of every public repository. One selected Hugging Face model accompanies its source investigation, not an independent claim of model performance.
